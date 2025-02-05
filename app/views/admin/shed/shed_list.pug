@@ -1,4 +1,4 @@
-extends ../_layouts/main
+extends ../_layouts/admin
 
 block content
   .container.my-4
@@ -38,4 +38,4 @@ block content
                 else
                   | $#{ (shed.basePrice + shed.optionsPrice).toLocaleString() }
               td
-                a.btn.btn-sm.btn-primary(href=`/sheds/${shed.id}`) View Details
+                a.btn.btn-sm.btn-primary(href=`/admin/sheds/${shed.id}`) View Details
