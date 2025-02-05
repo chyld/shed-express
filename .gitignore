@@ -4,3 +4,4 @@
 /prisma/shed*
 /.env
 /public/media
+/public/css
