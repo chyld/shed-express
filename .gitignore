@@ -2,3 +2,4 @@
 /.cursorrules
 /prisma/migrations
 /prisma/shed*
+/.env

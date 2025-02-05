@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -14,6 +15,6 @@ app.set("view engine", "pug");
 app.use("/", homeRouter);
 app.use("/admin/sheds", adminShedRouter);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
