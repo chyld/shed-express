@@ -1,0 +1,71 @@
+extends ../_layouts/admin
+
+block content
+  .container.my-4
+    h1.mb-4 Trailer Details
+
+    .table-responsive
+      table.table
+        tbody
+          tr
+            th(scope="row") Title
+            td= trailer.title
+          tr
+            th(scope="row") Description
+            td= trailer.description
+          tr
+            th(scope="row") Type
+            td= trailer.trailerType
+          tr
+            th(scope="row") Status
+            td
+              span.badge(class=trailer.isNew ? "bg-success" : "bg-secondary")= trailer.isNew ? "New" : "Used"
+          tr
+            th(scope="row") Model Number
+            td= trailer.modelNumber
+          tr
+            th(scope="row") VIN
+            td= trailer.vin
+          tr
+            th(scope="row") Plate Number
+            td= trailer.plateNumber
+          tr
+            th(scope="row") Size
+            td #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
+          tr
+            th(scope="row") Base Price
+            td $#{ trailer.price.toLocaleString() }
+          tr
+            th(scope="row") Sale Percentage
+            td= trailer.salePercent > 0 ? `${trailer.salePercent}%` : "No sale"
+          tr
+            th(scope="row") Final Price
+            td.fw-bold
+              if trailer.salePercent > 0
+                | $#{ Math.round(trailer.price * (1 - trailer.salePercent/100)).toLocaleString() }
+              else
+                | $#{ trailer.price.toLocaleString() }
+          tr
+            th(scope="row") Sold Status
+            td
+              span.badge(class=trailer.isSold ? "bg-danger" : "bg-success")
+                = trailer.isSold ? "Sold" : "Available"
+
+    if trailer.media && trailer.media.length > 0
+      h2.mt-4.mb-3 Media
+      .table-responsive
+        table.table
+          thead
+            tr
+              th File Path
+              th Type
+              th Primary
+          tbody
+            each item in trailer.media
+              tr
+                td= item.path
+                td= item.isPhoto ? "Photo" : "Other"
+                td= item.isPrimary ? "Yes" : "No"
+
+    .mt-4
+      a.btn.btn-secondary(href="/admin/trailers") Back to List
