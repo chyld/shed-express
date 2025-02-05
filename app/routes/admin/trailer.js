@@ -7,12 +7,11 @@ const prisma = new PrismaClient();
 router.get("/", async (req, res) => {
   try {
     const trailers = await prisma.trailer.findMany({
-      where: {
-        isDeleted: false,
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
+      orderBy: [
+        { isDeleted: "asc" }, // Non-deleted items first
+        { isSold: "asc" }, // Then non-sold items
+        { createdAt: "desc" }, // Newest at the top
+      ],
     });
 
     res.render("admin/trailer/trailer_list", { trailers });

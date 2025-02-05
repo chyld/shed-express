@@ -4,48 +4,52 @@ block head
   link(rel="stylesheet", href="/css/admin_list.css")
 
 block content
-  .container.my-4
-    h1.mb-4 Available Trailers
+  .admin-container
+    h1.admin-title Trailer Listing
 
-    .table-responsive
-      table.table.table-hover
-        thead
-          tr
-            th Type
-            th Title
-            th Size
-            th Status
-            th Model #
-            th VIN
-            th Price
-            th Sale
-            th Final Price
-            th Actions
-        tbody
-          each trailer in trailers
-            tr
-              td= trailer.trailerType
-              td= trailer.title
-              td #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
-              td
-                span.badge(class=trailer.isNew ? "bg-success" : "bg-secondary")= trailer.isNew ? "New" : "Used"
-              td= trailer.modelNumber
-              td= trailer.vin
-              td $#{ trailer.price.toLocaleString() }
-              td
-                if trailer.salePercent > 0
-                  span.text-danger -#{ trailer.salePercent }%
-                else
-                  | -
-              td.fw-bold
-                if trailer.salePercent > 0
-                  | $#{ Math.round(trailer.price * (1 - trailer.salePercent/100)).toLocaleString() }
-                else
-                  | $#{ trailer.price.toLocaleString() }
-              td
-                a.btn.btn-sm.btn-primary.me-2(
-                  href=`/admin/trailers/${trailer.id}`
-                ) View Details
-                a.btn.btn-sm.btn-secondary(
-                  href=`/admin/media/trailer/${trailer.id}`
-                ) Media
+    table.admin-table
+      thead.admin-table-header
+        tr
+          th.admin-table-th Media
+          th.admin-table-th Status
+          th.admin-table-th New?
+          th.admin-table-th Title
+          th.admin-table-th Model #
+          th.admin-table-th VIN
+          th.admin-table-th Plate #
+          th.admin-table-th Size
+          th.admin-table-th Price
+          th.admin-table-th Sale
+          th.admin-table-th Sale Price
+          th.admin-table-th Type
+      tbody
+        each trailer in trailers
+          tr.admin-table-row
+            td.admin-table-td
+              a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
+            td.admin-table-td
+              if trailer.isDeleted
+                span.admin-badge.admin-badge-deleted Deleted
+              else if trailer.isSold
+                span.admin-badge.admin-badge-sold Sold
+            td.admin-table-td
+              if trailer.isNew
+                span.admin-badge.admin-badge-new New
+              else
+                span.admin-badge.admin-badge-repo Used
+            td.admin-table-td
+              a.admin-link(href=`/admin/trailers/${trailer.id}`)= trailer.title
+            td.admin-table-td= trailer.modelNumber
+            td.admin-table-td= trailer.vin
+            td.admin-table-td= trailer.plateNumber
+            td.admin-table-td #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
+            td.admin-table-td.admin-price $#{ (trailer.price / 100).toFixed(2) }
+            td.admin-table-td
+              if trailer.salePercent > 0
+                span.admin-sale-price -#{ trailer.salePercent }%
+            td.admin-table-td
+              if trailer.salePercent > 0
+                span.admin-sale-price $#{ (trailer.price * (1 - trailer.salePercent/100) / 100).toFixed(2) }
+              else
+                span.admin-price $#{ (trailer.price / 100).toFixed(2) }
+            td.admin-table-td= trailer.trailerType
