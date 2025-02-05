@@ -21,26 +21,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-  try {
-    const shed = await prisma.shed.findFirst({
-      where: {
-        id: req.params.id,
-      },
-      include: {
-        media: {},
-      },
-    });
-
-    if (!shed) {
-      return res.status(404).render("error", { message: "Shed not found" });
-    }
-
-    res.render("admin/shed/shed_detail", { shed });
-  } catch (error) {
-    console.error("Error fetching shed:", error);
-    res.status(500).render("error", { message: "Error loading shed details" });
-  }
-});
-
 export default router;

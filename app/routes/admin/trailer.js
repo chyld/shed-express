@@ -21,33 +21,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-  try {
-    const trailer = await prisma.trailer.findFirst({
-      where: {
-        id: req.params.id,
-        isDeleted: false,
-      },
-      include: {
-        media: {
-          where: {
-            isDeleted: false,
-          },
-        },
-      },
-    });
-
-    if (!trailer) {
-      return res.status(404).render("error", { message: "Trailer not found" });
-    }
-
-    res.render("admin/trailer/trailer_detail", { trailer });
-  } catch (error) {
-    console.error("Error fetching trailer:", error);
-    res
-      .status(500)
-      .render("error", { message: "Error loading trailer details" });
-  }
-});
-
 export default router;
