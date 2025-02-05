@@ -28,15 +28,23 @@ block content
 
         div
           if mediaItem.isPrimary
-            span Primary
+            span(style="color: green; margin-right: 10px") ★ Primary
           span= mediaItem.isPhoto ? "Photo" : "Video"
           span(style="margin-left: 10px")= mediaItem.isDeleted ? "DELETED" : ""
 
-        form(
-          action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
-          method="POST"
-        )
-          button(type="submit")= mediaItem.isDeleted ? "Restore" : "Delete"
+        div(style="display: flex; gap: 10px; margin-top: 10px")
+          form(
+            action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
+            method="POST"
+          )
+            button(type="submit")= mediaItem.isDeleted ? "Restore" : "Delete"
+
+          if !mediaItem.isDeleted
+            form(
+              action=`/admin/media/${type}/${item.id}/primary/${mediaItem.id}`,
+              method="POST"
+            )
+              button(type="submit")= mediaItem.isPrimary ? "Remove Primary" : "Set Primary"
 
   if media.length === 0
     p No media found. Upload some files to get started.

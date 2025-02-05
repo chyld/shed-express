@@ -120,7 +120,11 @@ router.post("/:type/:id/delete/:mediaId", async (req, res) => {
       });
       await prisma.shedMedia.update({
         where: { id: mediaId },
-        data: { isDeleted: !media.isDeleted },
+        data: {
+          isDeleted: !media.isDeleted,
+          // If we're setting isDeleted to true, then isPrimary should be false
+          isPrimary: media.isDeleted ? media.isPrimary : false,
+        },
       });
     } else if (type === "trailer") {
       const media = await prisma.trailerMedia.findUnique({
@@ -128,7 +132,11 @@ router.post("/:type/:id/delete/:mediaId", async (req, res) => {
       });
       await prisma.trailerMedia.update({
         where: { id: mediaId },
-        data: { isDeleted: !media.isDeleted },
+        data: {
+          isDeleted: !media.isDeleted,
+          // If we're setting isDeleted to true, then isPrimary should be false
+          isPrimary: media.isDeleted ? media.isPrimary : false,
+        },
       });
     }
 
@@ -136,6 +144,66 @@ router.post("/:type/:id/delete/:mediaId", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Error toggling media deletion status");
+  }
+});
+
+// Toggle primary status
+router.post("/:type/:id/primary/:mediaId", async (req, res) => {
+  const { type, id, mediaId } = req.params;
+
+  try {
+    if (type === "shed") {
+      // Start a transaction to ensure data consistency
+      await prisma.$transaction(async (tx) => {
+        // First, remove primary status from all media for this shed
+        await tx.shedMedia.updateMany({
+          where: {
+            shedId: id,
+            isPrimary: true,
+          },
+          data: { isPrimary: false },
+        });
+
+        // Get current media to check its status
+        const media = await tx.shedMedia.findUnique({
+          where: { id: mediaId },
+        });
+
+        // Only set to primary if it wasn't primary before
+        if (!media.isPrimary) {
+          await tx.shedMedia.update({
+            where: { id: mediaId },
+            data: { isPrimary: true },
+          });
+        }
+      });
+    } else if (type === "trailer") {
+      await prisma.$transaction(async (tx) => {
+        await tx.trailerMedia.updateMany({
+          where: {
+            trailerId: id,
+            isPrimary: true,
+          },
+          data: { isPrimary: false },
+        });
+
+        const media = await tx.trailerMedia.findUnique({
+          where: { id: mediaId },
+        });
+
+        if (!media.isPrimary) {
+          await tx.trailerMedia.update({
+            where: { id: mediaId },
+            data: { isPrimary: true },
+          });
+        }
+      });
+    }
+
+    res.redirect(`/admin/media/${type}/${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error setting primary media");
   }
 });
 
