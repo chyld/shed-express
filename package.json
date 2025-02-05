@@ -18,6 +18,8 @@
     "pug": "^3.0.3"
   },
   "devDependencies": {
-    "@prettier/plugin-pug": "^3.2.0"
+    "@prettier/plugin-pug": "^3.2.0",
+    "@tailwindcss/cli": "^4.0.3",
+    "tailwindcss": "^4.0.3"
   }
 }
