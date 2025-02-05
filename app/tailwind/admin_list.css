@@ -1,1 +1,73 @@
 @import "tailwindcss";
+
+@utility admin-container {
+  @apply container mx-auto px-4 py-6;
+}
+
+@utility admin-title {
+  @apply text-2xl font-bold text-gray-900 mb-6;
+}
+
+@utility admin-table {
+  @apply min-w-full bg-white shadow-sm rounded-lg overflow-hidden border-y border-gray-200 overflow-x-auto;
+}
+
+@utility admin-table-header {
+  @apply bg-gray-50;
+}
+
+@utility admin-table-th {
+  @apply px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide;
+}
+
+@utility admin-table-row {
+  @apply hover:bg-gray-50 border-b border-gray-200;
+}
+
+@utility admin-table-td {
+  @apply px-4 py-3 text-sm text-gray-900 whitespace-nowrap;
+}
+
+@utility admin-link {
+  @apply text-blue-600 hover:text-blue-800 hover:underline;
+}
+
+@utility admin-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+@utility admin-badge-new {
+  @apply bg-green-100 text-green-800;
+}
+
+@utility admin-badge-repo {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+@utility admin-badge-sold {
+  @apply bg-red-100 text-red-800;
+}
+
+@utility admin-badge-deleted {
+  @apply bg-gray-100 text-gray-600;
+}
+
+@utility admin-media-btn {
+  @apply inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50;
+}
+
+@utility admin-price {
+  @apply font-mono;
+}
+
+@utility admin-sale-price {
+  @apply text-red-600 font-mono font-bold;
+}
+
+@utility admin-colors-list {
+  @apply flex flex-col gap-1 text-sm text-gray-600;
+}
+
+@utility admin-colors-empty {
+  @apply text-sm text-gray-400 italic;
+}

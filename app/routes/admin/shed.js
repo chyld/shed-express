@@ -7,12 +7,11 @@ const prisma = new PrismaClient();
 router.get("/", async (req, res) => {
   try {
     const sheds = await prisma.shed.findMany({
-      where: {
-        isDeleted: false,
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
+      orderBy: [
+        { isDeleted: "asc" }, // Non-deleted items first
+        { isSold: "asc" }, // Then non-sold items
+        { createdAt: "desc" }, // Newest at the top
+      ],
     });
 
     res.render("admin/shed/shed_list", { sheds });
@@ -27,14 +26,9 @@ router.get("/:id", async (req, res) => {
     const shed = await prisma.shed.findFirst({
       where: {
         id: req.params.id,
-        isDeleted: false,
       },
       include: {
-        media: {
-          where: {
-            isDeleted: false,
-          },
-        },
+        media: {},
       },
     });
 

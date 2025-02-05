@@ -411,3 +411,32 @@ INSERT INTO Trailer (
     'flatbed',
     datetime('now')
   );
+
+-- For sheds, update these IDs to have isDeleted = true
+UPDATE Shed 
+SET isDeleted = true 
+WHERE id IN (
+  'clh1234567892',  -- Large Barn Style Cabin
+  'clh1234567896',  -- Mountain Lodge Cabin
+  'clh1234567901',  -- Lakeside Cabin
+  'clh1234567905',  -- Craftsman Studio
+  'clh1234567909',  -- Coastal Cottage
+  'clh1234567914'   -- Heritage Barn
+);
+
+-- For trailers, update these IDs to have isDeleted = true
+UPDATE Trailer 
+SET isDeleted = true 
+WHERE id IN (
+  'clt1234567892',  -- Dump Trailer
+  'clt1234567896'   -- Gooseneck Trailer
+);
+
+-- Mark some trailers as sold
+UPDATE Trailer 
+SET isSold = true 
+WHERE id IN (
+  'clt1234567890',  -- Utility Trailer 5x8
+  'clt1234567894',  -- Enclosed Cargo 6x12
+  'clt1234567898'   -- Tilt Deck 7x18
+);
