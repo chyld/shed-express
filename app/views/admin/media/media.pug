@@ -1,0 +1,39 @@
+extends ../_layouts/admin
+
+block content
+  div
+    div
+      h1 Media Manager for #{ type === 'shed' ? 'Shed' : 'Trailer' }: #{ item.title }
+      a(href=`/admin/${type}s/${item.id}`) Back to #{ type }
+
+  form(
+    action=`/admin/media/${type}/${item.id}/upload`,
+    method="POST",
+    enctype="multipart/form-data"
+  )
+    div
+      input(type="file", name="media", accept="image/*,video/*")
+      button(type="submit") Upload Files
+
+  div
+    each mediaItem in media
+      div
+        if mediaItem.isPhoto
+          img(src=mediaItem.path, alt="Media")
+        else
+          video(controls)
+            source(src=mediaItem.path)
+
+        div
+          if mediaItem.isPrimary
+            span Primary
+          span= mediaItem.isPhoto ? "Photo" : "Video"
+
+        form(
+          action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
+          method="POST"
+        )
+          button(type="submit") Delete
+
+  if media.length === 0
+    p No media found. Upload some files to get started.

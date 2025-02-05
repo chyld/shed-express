@@ -3,3 +3,4 @@
 /prisma/migrations
 /prisma/shed*
 /.env
+/public/media

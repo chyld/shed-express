@@ -40,4 +40,9 @@ block content
                 else
                   | $#{ trailer.price.toLocaleString() }
               td
-                a.btn.btn-sm.btn-primary(href=`/admin/trailers/${trailer.id}`) View Details
+                a.btn.btn-sm.btn-primary.me-2(
+                  href=`/admin/trailers/${trailer.id}`
+                ) View Details
+                a.btn.btn-sm.btn-secondary(
+                  href=`/admin/media/trailer/${trailer.id}`
+                ) Media

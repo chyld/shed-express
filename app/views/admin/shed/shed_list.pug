@@ -38,4 +38,5 @@ block content
                 else
                   | $#{ (shed.basePrice + shed.optionsPrice).toLocaleString() }
               td
-                a.btn.btn-sm.btn-primary(href=`/admin/sheds/${shed.id}`) View Details
+                a.btn.btn-sm.btn-primary.me-2(href=`/admin/sheds/${shed.id}`) View Details
+                a.btn.btn-sm.btn-secondary(href=`/admin/media/shed/${shed.id}`) Media
