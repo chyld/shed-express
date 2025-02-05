@@ -7,11 +7,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
-
-// Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
-
-// Routes
+app.set('views', path.join(__dirname, 'app/views'))
+app.set('view engine', 'pug')
 app.use('/', homeRouter)
 
 app.listen(3000, () => {
