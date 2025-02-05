@@ -17,7 +17,9 @@ block content
 
   div
     each mediaItem in media
-      div
+      div(
+        style=mediaItem.isDeleted ? "border: 2px solid red; padding: 10px; margin: 10px 0;" : "padding: 10px; margin: 10px 0;"
+      )
         if mediaItem.isPhoto
           img(src=mediaItem.path, alt="Media")
         else
@@ -28,12 +30,13 @@ block content
           if mediaItem.isPrimary
             span Primary
           span= mediaItem.isPhoto ? "Photo" : "Video"
+          span(style="margin-left: 10px")= mediaItem.isDeleted ? "DELETED" : ""
 
         form(
           action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
           method="POST"
         )
-          button(type="submit") Delete
+          button(type="submit")= mediaItem.isDeleted ? "Restore" : "Delete"
 
   if media.length === 0
     p No media found. Upload some files to get started.

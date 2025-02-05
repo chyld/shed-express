@@ -43,7 +43,7 @@ router.get("/:type/:id", async (req, res) => {
         where: { id },
         include: {
           media: {
-            where: { isDeleted: false },
+            orderBy: { createdAt: "desc" },
           },
         },
       });
@@ -53,7 +53,7 @@ router.get("/:type/:id", async (req, res) => {
         where: { id },
         include: {
           media: {
-            where: { isDeleted: false },
+            orderBy: { createdAt: "desc" },
           },
         },
       });
@@ -115,21 +115,27 @@ router.post("/:type/:id/delete/:mediaId", async (req, res) => {
 
   try {
     if (type === "shed") {
+      const media = await prisma.shedMedia.findUnique({
+        where: { id: mediaId },
+      });
       await prisma.shedMedia.update({
         where: { id: mediaId },
-        data: { isDeleted: true },
+        data: { isDeleted: !media.isDeleted },
       });
     } else if (type === "trailer") {
+      const media = await prisma.trailerMedia.findUnique({
+        where: { id: mediaId },
+      });
       await prisma.trailerMedia.update({
         where: { id: mediaId },
-        data: { isDeleted: true },
+        data: { isDeleted: !media.isDeleted },
       });
     }
 
     res.redirect(`/admin/media/${type}/${id}`);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error deleting media");
+    res.status(500).send("Error toggling media deletion status");
   }
 });
 
