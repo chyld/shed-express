@@ -1,2 +1,4 @@
 /node_modules
 /.cursorrules
+/prisma/migrations
+/prisma/shed*
