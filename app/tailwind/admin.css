@@ -1,83 +1,59 @@
 @import "tailwindcss";
 
+/* Base Layout */
+@utility container-base {
+  @apply max-w-7xl mx-auto px-4;
+}
+
 @utility admin-container {
-  @apply container mx-auto px-4 py-6;
-}
-
-@utility admin-title {
-  @apply text-2xl font-bold text-gray-900 mb-6;
-}
-
-@utility admin-table {
-  @apply min-w-full bg-white shadow-sm rounded-lg overflow-hidden border-y border-gray-200 overflow-x-auto;
-}
-
-@utility admin-table-header {
-  @apply bg-gray-50;
-}
-
-@utility admin-table-th {
-  @apply px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide;
-}
-
-@utility admin-table-row {
-  @apply hover:bg-gray-50 border-b border-gray-200;
-}
-
-@utility admin-table-td {
-  @apply px-4 py-3 text-sm text-gray-900;
-}
-
-@utility admin-link {
-  @apply text-blue-600 hover:text-blue-800 hover:underline;
-}
-
-@utility admin-badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-}
-
-@utility admin-badge-new {
-  @apply bg-green-100 text-green-800;
-}
-
-@utility admin-badge-repo {
-  @apply bg-yellow-100 text-yellow-800;
-}
-
-@utility admin-badge-sold {
-  @apply bg-red-100 text-red-800;
-}
-
-@utility admin-badge-deleted {
-  @apply bg-gray-100 text-gray-600;
-}
-
-@utility admin-media-btn {
-  @apply inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50;
-}
-
-@utility admin-price {
-  @apply font-mono;
-}
-
-@utility admin-sale-price {
-  @apply text-red-600 font-mono font-bold;
-}
-
-@utility admin-colors-list {
-  @apply flex flex-col gap-1 text-sm text-gray-600;
-}
-
-@utility admin-colors-empty {
-  @apply text-sm text-gray-400 italic;
-}
-
-@utility admin-nav {
-  @apply bg-gray-800 shadow-lg;
+  @apply container-base py-6 max-w-full;
 }
 
 @utility admin-nav-container {
-  @apply max-w-7xl mx-auto px-4;
+  @apply container-base;
+}
+
+@utility admin-footer-container {
+  @apply container-base py-4;
+}
+
+/* Layout */
+@utility admin-html {
+  @apply h-full;
+}
+
+@utility admin-body {
+  @apply bg-gray-900 min-h-full flex flex-col;
+}
+
+@utility admin-main {
+  @apply flex-1 container mx-auto px-4 py-8 bg-white my-8 rounded-lg shadow-xl;
+}
+
+@utility admin-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+/* Typography */
+@utility text-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+@utility admin-title {
+  @apply text-title mb-6;
+}
+
+@utility admin-form-section-title {
+  @apply text-lg font-medium text-gray-900 mb-4;
+}
+
+@utility admin-description {
+  @apply text-sm text-gray-500 mt-1 break-words whitespace-normal max-w-[200px];
+}
+
+/* Navigation */
+@utility admin-nav {
+  @apply bg-gray-800 shadow-lg;
 }
 
 @utility admin-nav-content {
@@ -96,40 +72,120 @@
   @apply text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700;
 }
 
-@utility admin-footer {
-  @apply bg-gray-800 mt-auto;
+/* Buttons */
+@utility button-base {
+  @apply px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
 }
 
-@utility admin-footer-container {
-  @apply max-w-7xl mx-auto px-4 py-4;
+@utility admin-button-primary {
+  @apply button-base bg-blue-600 text-white hover:bg-blue-700;
 }
 
-@utility admin-footer-content {
-  @apply flex items-center justify-center;
+@utility admin-button-secondary {
+  @apply button-base bg-white text-gray-700 border border-gray-300 hover:bg-gray-50;
 }
 
-@utility admin-footer-text {
-  @apply text-gray-300 text-sm;
+/* Table Styles */
+@utility table-base {
+  @apply px-4 py-3 text-sm;
 }
 
-@utility admin-html {
-  @apply h-full;
+@utility admin-table-container {
+  @apply w-full overflow-x-auto;
 }
 
-@utility admin-body {
-  @apply bg-gray-900 min-h-full flex flex-col;
+@utility admin-table {
+  @apply min-w-full w-full bg-white shadow-sm rounded-lg overflow-hidden border-y border-gray-200;
 }
 
-@utility admin-main {
-  @apply flex-1 container mx-auto px-4 py-8 bg-white my-8 rounded-lg shadow-xl;
+@utility admin-table-header {
+  @apply bg-gray-50;
 }
 
-@utility admin-description {
-  @apply text-sm text-gray-500 mt-1 break-words whitespace-normal max-w-[200px];
+@utility admin-table-th {
+  @apply table-base text-left text-xs font-medium text-gray-500 uppercase tracking-wide;
 }
 
+@utility admin-table-td {
+  @apply table-base text-gray-900;
+}
+
+@utility admin-table-row {
+  @apply hover:bg-gray-50 border-b border-gray-200;
+}
+
+@utility admin-table-title-cell {
+  @apply w-full min-w-[300px] max-w-none;
+}
+
+@utility admin-table-fixed-cell {
+  @apply w-auto whitespace-nowrap min-w-fit;
+}
+
+/* Forms */
+@utility admin-form {
+  @apply w-full max-w-4xl mx-auto;
+}
+
+@utility admin-form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+@utility admin-form-group {
+  @apply space-y-2;
+}
+
+@utility admin-form-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+@utility admin-form-section {
+  @apply border-2 border-gray-400 rounded-lg p-6 mb-6 bg-gray-100;
+}
+
+@utility form-input-base {
+  @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
+}
+
+@utility admin-form-input {
+  @apply form-input-base;
+}
+
+@utility admin-form-textarea {
+  @apply form-input-base h-32;
+}
+
+@utility admin-form-checkboxes {
+  @apply space-y-2 mt-1;
+}
+
+@utility admin-form-checkbox {
+  @apply flex items-center space-x-2;
+}
+
+@utility admin-form-checkbox-input {
+  @apply h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500;
+}
+
+/* Media */
 @utility admin-media-container {
-  @apply max-w-7xl mx-auto p-6 space-y-6;
+  @apply container-base p-6 space-y-6;
+}
+
+@utility media-preview-base {
+  @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700;
+}
+
+@utility admin-media-preview-container {
+  @apply flex flex-col items-center gap-2;
+}
+
+@utility admin-media-preview-image {
+  @apply media-preview-base;
+}
+
+@utility admin-media-preview-video {
+  @apply media-preview-base bg-gray-900;
 }
 
 @utility admin-media-header {
@@ -182,20 +238,16 @@
   @apply flex items-center gap-2 text-sm;
 }
 
-@utility admin-media-primary {
-  @apply text-green-600 font-medium;
-}
-
-@utility admin-media-deleted-tag {
-  @apply text-red-600 font-medium;
-}
-
 @utility admin-media-actions {
   @apply flex gap-2 mt-2;
 }
 
 @utility admin-media-button {
-  @apply px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-50;
+  @apply button-base px-3 py-1.5 text-sm font-medium border border-gray-300 hover:bg-gray-50;
+}
+
+@utility admin-media-btn {
+  @apply button-base inline-flex items-center px-3 py-1 text-sm font-medium border border-gray-300 text-gray-700 bg-white hover:bg-gray-50;
 }
 
 @utility admin-media-button-danger {
@@ -218,88 +270,75 @@
   @apply underline decoration-gray-300 decoration-2 underline-offset-4;
 }
 
-@utility admin-media-preview-container {
-  @apply flex flex-col items-center gap-2;
+@utility admin-media-primary {
+  @apply text-green-600 font-medium;
 }
 
-@utility admin-media-preview-image {
-  @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700;
+@utility admin-media-deleted-tag {
+  @apply text-red-600 font-medium;
 }
 
-@utility admin-media-preview-video {
-  @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700 bg-gray-900;
+/* Status Badges */
+@utility badge-base {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
 }
 
-@utility admin-form {
-  @apply w-full max-w-4xl mx-auto;
+@utility admin-badge {
+  @apply badge-base;
 }
 
-@utility admin-form-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+@utility admin-badge-new {
+  @apply badge-base bg-green-100 text-green-800;
 }
 
-@utility admin-form-group {
-  @apply space-y-2;
+@utility admin-badge-repo {
+  @apply badge-base bg-yellow-100 text-yellow-800;
 }
 
-@utility admin-form-label {
-  @apply block text-sm font-medium text-gray-700;
+@utility admin-badge-sold {
+  @apply badge-base bg-red-100 text-red-800;
 }
 
-@utility admin-form-input {
-  @apply block w-full rounded-md border-gray-300 shadow-sm 
-         focus:border-blue-500 focus:ring-blue-500;
+@utility admin-badge-deleted {
+  @apply badge-base bg-gray-100 text-gray-600;
 }
 
-@utility admin-form-textarea {
-  @apply block w-full rounded-md border-gray-300 shadow-sm 
-         focus:border-blue-500 focus:ring-blue-500 h-32;
+/* Footer */
+@utility admin-footer {
+  @apply bg-gray-800 mt-auto;
 }
 
-@utility admin-form-colors {
-  @apply space-y-4;
+@utility admin-footer-content {
+  @apply flex items-center justify-center;
 }
 
-@utility admin-form-color {
-  @apply space-y-1;
+@utility admin-footer-text {
+  @apply text-gray-300 text-sm;
 }
 
-@utility admin-form-checkboxes {
-  @apply space-y-2 mt-1;
+/* Links */
+@utility admin-link {
+  @apply text-blue-600 hover:text-blue-800 hover:underline;
 }
 
-@utility admin-form-checkbox {
-  @apply flex items-center space-x-2;
+/* Colors List */
+@utility admin-colors-list {
+  @apply flex flex-col gap-1 text-sm text-gray-600;
 }
 
-@utility admin-form-checkbox-input {
-  @apply h-4 w-4 rounded border-gray-300 text-blue-600 
-         focus:ring-blue-500;
+@utility admin-colors-empty {
+  @apply text-sm text-gray-400 italic;
 }
 
-@utility admin-form-actions {
-  @apply flex justify-end space-x-4 mt-8 col-span-full;
+/* Prices */
+@utility price-base {
+  @apply font-mono;
 }
 
-@utility admin-button-primary {
-  @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 
-         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+@utility admin-price {
+  @apply price-base;
 }
 
-@utility admin-button-secondary {
-  @apply px-4 py-2 bg-white text-gray-700 rounded-md border border-gray-300 
-         hover:bg-gray-50 focus:outline-none focus:ring-2 
-         focus:ring-blue-500 focus:ring-offset-2;
-}
-
-@utility admin-header {
-  @apply flex justify-between items-center mb-6;
-}
-
-@utility admin-form-section {
-  @apply border border-gray-200 rounded-lg p-6 mb-6 bg-gray-100;
-}
-
-@utility admin-form-section-title {
-  @apply text-lg font-medium text-gray-900 mb-4;
+@utility admin-sale-price {
+  @apply price-base text-red-600 font-bold;
 }

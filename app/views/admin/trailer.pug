@@ -9,68 +9,71 @@ block content
       h1.admin-title Trailer Listing
       a.admin-button-primary(href="/admin/trailers/new") New Trailer
 
-    table.admin-table
-      thead.admin-table-header
-        tr
-          th.admin-table-th Media
-          th.admin-table-th Status
-          th.admin-table-th New?
-          th.admin-table-th Title
-          th.admin-table-th Model #
-          th.admin-table-th VIN
-          th.admin-table-th Plate #
-          th.admin-table-th Size
-          th.admin-table-th Price
-          th.admin-table-th Sale
-          th.admin-table-th Sale Price
-          th.admin-table-th Type
-      tbody
-        each trailer in trailers
-          tr.admin-table-row
-            td.admin-table-td
-              if trailer.media && trailer.media.some(m => m.isPrimary && !m.isDeleted)
-                .admin-media-preview-container
-                  - const primaryMedia = trailer.media.find((m) => m.isPrimary && !m.isDeleted);
-                  if primaryMedia.isPhoto
-                    img.admin-media-preview-image(
-                      src=primaryMedia.path,
-                      alt=trailer.title
-                    )
-                  else
-                    video.admin-media-preview-video(
-                      src=primaryMedia.path,
-                      muted,
-                      loop,
-                      autoplay
-                    )
+    .admin-table-container
+      table.admin-table
+        thead.admin-table-header
+          tr
+            th.admin-table-th.admin-table-fixed-cell Media
+            th.admin-table-th.admin-table-fixed-cell Status
+            th.admin-table-th.admin-table-fixed-cell New?
+            th.admin-table-th.admin-table-title-cell Title
+            th.admin-table-th.admin-table-fixed-cell Model #
+            th.admin-table-th.admin-table-fixed-cell VIN
+            th.admin-table-th.admin-table-fixed-cell Plate #
+            th.admin-table-th.admin-table-fixed-cell Size
+            th.admin-table-th.admin-table-fixed-cell Price
+            th.admin-table-th.admin-table-fixed-cell Sale
+            th.admin-table-th.admin-table-fixed-cell Sale Price
+            th.admin-table-th.admin-table-fixed-cell Type
+        tbody
+          each trailer in trailers
+            tr.admin-table-row
+              td.admin-table-td.admin-table-fixed-cell
+                if trailer.media && trailer.media.some(m => m.isPrimary && !m.isDeleted)
+                  .admin-media-preview-container
+                    - const primaryMedia = trailer.media.find((m) => m.isPrimary && !m.isDeleted);
+                    if primaryMedia.isPhoto
+                      img.admin-media-preview-image(
+                        src=primaryMedia.path,
+                        alt=trailer.title
+                      )
+                    else
+                      video.admin-media-preview-video(
+                        src=primaryMedia.path,
+                        muted,
+                        loop,
+                        autoplay
+                      )
+                    a.admin-media-btn(
+                      href=`/admin/media/trailer/${trailer.id}`
+                    ) Media
+                else
                   a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
-              else
-                a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
-            td.admin-table-td
-              if trailer.isDeleted
-                span.admin-badge.admin-badge-deleted Deleted
-              else if trailer.isSold
-                span.admin-badge.admin-badge-sold Sold
-            td.admin-table-td
-              if trailer.isNew
-                span.admin-badge.admin-badge-new New
-              else
-                span.admin-badge.admin-badge-repo Used
-            td.admin-table-td
-              div
-                a.admin-link(href=`/admin/trailers/${trailer.id}/edit`)= trailer.title
-              .admin-description= trailer.description
-            td.admin-table-td= trailer.modelNumber
-            td.admin-table-td= trailer.vin
-            td.admin-table-td= trailer.plateNumber
-            td.admin-table-td #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
-            td.admin-table-td.admin-price $#{ (trailer.price / 100).toFixed(2) }
-            td.admin-table-td
-              if trailer.salePercent > 0
-                span.admin-sale-price -#{ trailer.salePercent }%
-            td.admin-table-td
-              if trailer.salePercent > 0
-                span.admin-sale-price $#{ (trailer.price * (1 - trailer.salePercent/100) / 100).toFixed(2) }
-              else
-                span.admin-price $#{ (trailer.price / 100).toFixed(2) }
-            td.admin-table-td= trailer.trailerType
+              td.admin-table-td.admin-table-fixed-cell
+                if trailer.isDeleted
+                  span.admin-badge.admin-badge-deleted Deleted
+                else if trailer.isSold
+                  span.admin-badge.admin-badge-sold Sold
+              td.admin-table-td.admin-table-fixed-cell
+                if trailer.isNew
+                  span.admin-badge.admin-badge-new New
+                else
+                  span.admin-badge.admin-badge-repo Used
+              td.admin-table-td.admin-table-title-cell
+                div
+                  a.admin-link(href=`/admin/trailers/${trailer.id}/edit`)= trailer.title
+                .admin-description= trailer.description
+              td.admin-table-td.admin-table-fixed-cell= trailer.modelNumber
+              td.admin-table-td.admin-table-fixed-cell= trailer.vin
+              td.admin-table-td.admin-table-fixed-cell= trailer.plateNumber
+              td.admin-table-td.admin-table-fixed-cell #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
+              td.admin-table-td.admin-table-fixed-cell.admin-price $#{ (trailer.price / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell
+                if trailer.salePercent > 0
+                  span.admin-sale-price -#{ trailer.salePercent }%
+              td.admin-table-td.admin-table-fixed-cell
+                if trailer.salePercent > 0
+                  span.admin-sale-price $#{ (trailer.price * (1 - trailer.salePercent/100) / 100).toFixed(2) }
+                else
+                  span.admin-price $#{ (trailer.price / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell= trailer.trailerType

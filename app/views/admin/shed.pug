@@ -9,79 +9,80 @@ block content
       h1.admin-title Shed Listing
       a.admin-button-primary(href="/admin/sheds/new") New Shed
 
-    table.admin-table
-      thead.admin-table-header
-        tr
-          th.admin-table-th Media
-          th.admin-table-th Status
-          th.admin-table-th New?
-          th.admin-table-th Title
-          th.admin-table-th Inventory
-          th.admin-table-th Size
-          th.admin-table-th Base Price
-          th.admin-table-th Options
-          th.admin-table-th Total
-          th.admin-table-th Sale
-          th.admin-table-th Final Price
-          th.admin-table-th Type
-          th.admin-table-th Colors
-      tbody
-        each shed in sheds
-          tr.admin-table-row
-            td.admin-table-td
-              if shed.media && shed.media.some(m => m.isPrimary && !m.isDeleted)
-                .admin-media-preview-container
-                  - const primaryMedia = shed.media.find((m) => m.isPrimary && !m.isDeleted);
-                  if primaryMedia.isPhoto
-                    img.admin-media-preview-image(
-                      src=primaryMedia.path,
-                      alt=shed.title
-                    )
-                  else
-                    video.admin-media-preview-video(
-                      src=primaryMedia.path,
-                      muted,
-                      loop,
-                      autoplay
-                    )
+    .admin-table-container
+      table.admin-table
+        thead.admin-table-header
+          tr
+            th.admin-table-th.admin-table-fixed-cell Media
+            th.admin-table-th.admin-table-fixed-cell Status
+            th.admin-table-th.admin-table-fixed-cell New?
+            th.admin-table-th.admin-table-title-cell Title
+            th.admin-table-th.admin-table-fixed-cell Inventory
+            th.admin-table-th.admin-table-fixed-cell Size
+            th.admin-table-th.admin-table-fixed-cell Base Price
+            th.admin-table-th.admin-table-fixed-cell Options
+            th.admin-table-th.admin-table-fixed-cell Total
+            th.admin-table-th.admin-table-fixed-cell Sale
+            th.admin-table-th.admin-table-fixed-cell Final Price
+            th.admin-table-th.admin-table-fixed-cell Type
+            th.admin-table-th.admin-table-fixed-cell Colors
+        tbody
+          each shed in sheds
+            tr.admin-table-row
+              td.admin-table-td.admin-table-fixed-cell
+                if shed.media && shed.media.some(m => m.isPrimary && !m.isDeleted)
+                  .admin-media-preview-container
+                    - const primaryMedia = shed.media.find((m) => m.isPrimary && !m.isDeleted);
+                    if primaryMedia.isPhoto
+                      img.admin-media-preview-image(
+                        src=primaryMedia.path,
+                        alt=shed.title
+                      )
+                    else
+                      video.admin-media-preview-video(
+                        src=primaryMedia.path,
+                        muted,
+                        loop,
+                        autoplay
+                      )
+                    a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
+                else
                   a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
-              else
-                a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
-            td.admin-table-td
-              if shed.isDeleted
-                span.admin-badge.admin-badge-deleted Deleted
-              else if shed.isSold
-                span.admin-badge.admin-badge-sold Sold
-            td.admin-table-td
-              if shed.isNew
-                span.admin-badge.admin-badge-new New
-              else
-                span.admin-badge.admin-badge-repo Repo
-            td.admin-table-td
-              div
-                a.admin-link(href=`/admin/sheds/${shed.id}/edit`)= shed.title
-              .admin-description= shed.description
-            td.admin-table-td= shed.inventoryNumber
-            td.admin-table-td #{ shed.sizeWidth }' × #{ shed.sizeLength }'
-            td.admin-table-td.admin-price $#{ (shed.basePrice / 100).toFixed(2) }
-            td.admin-table-td.admin-price $#{ (shed.optionsPrice / 100).toFixed(2) }
-            td.admin-table-td.admin-price $#{ ((shed.basePrice + shed.optionsPrice) / 100).toFixed(2) }
-            td.admin-table-td
-              if shed.salePercent > 0
-                span.admin-sale-price -#{ shed.salePercent }%
-            td.admin-table-td
-              if shed.salePercent > 0
-                span.admin-sale-price $#{ ((shed.basePrice + shed.optionsPrice) * (1 - shed.salePercent/100) / 100).toFixed(2) }
-              else
-                span.admin-price $#{ ((shed.basePrice + shed.optionsPrice) / 100).toFixed(2) }
-            td.admin-table-td= shed.shedType
-            td.admin-table-td
-              .admin-colors-list
-                if shed.colorRoof
-                  span Roof: #{ shed.colorRoof }
-                if shed.colorSiding
-                  span Siding: #{ shed.colorSiding }
-                if shed.colorTrim
-                  span Trim: #{ shed.colorTrim }
-                if !shed.colorRoof && !shed.colorSiding && !shed.colorTrim
-                  span.admin-colors-empty No colors specified
+              td.admin-table-td.admin-table-fixed-cell
+                if shed.isDeleted
+                  span.admin-badge.admin-badge-deleted Deleted
+                else if shed.isSold
+                  span.admin-badge.admin-badge-sold Sold
+              td.admin-table-td.admin-table-fixed-cell
+                if shed.isNew
+                  span.admin-badge.admin-badge-new New
+                else
+                  span.admin-badge.admin-badge-repo Repo
+              td.admin-table-td.admin-table-title-cell
+                div
+                  a.admin-link(href=`/admin/sheds/${shed.id}/edit`)= shed.title
+                .admin-description= shed.description
+              td.admin-table-td.admin-table-fixed-cell= shed.inventoryNumber
+              td.admin-table-td.admin-table-fixed-cell #{ shed.sizeWidth }' × #{ shed.sizeLength }'
+              td.admin-table-td.admin-table-fixed-cell.admin-price $#{ (shed.basePrice / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell.admin-price $#{ (shed.optionsPrice / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell.admin-price $#{ ((shed.basePrice + shed.optionsPrice) / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell
+                if shed.salePercent > 0
+                  span.admin-sale-price -#{ shed.salePercent }%
+              td.admin-table-td.admin-table-fixed-cell
+                if shed.salePercent > 0
+                  span.admin-sale-price $#{ ((shed.basePrice + shed.optionsPrice) * (1 - shed.salePercent/100) / 100).toFixed(2) }
+                else
+                  span.admin-price $#{ ((shed.basePrice + shed.optionsPrice) / 100).toFixed(2) }
+              td.admin-table-td.admin-table-fixed-cell= shed.shedType
+              td.admin-table-td.admin-table-fixed-cell
+                .admin-colors-list
+                  if shed.colorRoof
+                    span Roof: #{ shed.colorRoof }
+                  if shed.colorSiding
+                    span Siding: #{ shed.colorSiding }
+                  if shed.colorTrim
+                    span Trim: #{ shed.colorTrim }
+                  if !shed.colorRoof && !shed.colorSiding && !shed.colorTrim
+                    span.admin-colors-empty No colors specified
