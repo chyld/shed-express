@@ -27,7 +27,15 @@ block content
         each shed in sheds
           tr.admin-table-row
             td.admin-table-td
-              a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
+              if shed.media && shed.media.some(m => m.isPrimary && !m.isDeleted)
+                .admin-media-preview-container
+                  img.admin-media-preview-image(
+                    src=shed.media.find((m) => m.isPrimary && !m.isDeleted).path,
+                    alt=shed.title
+                  )
+                  a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
+              else
+                a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
             td.admin-table-td
               if shed.isDeleted
                 span.admin-badge.admin-badge-deleted Deleted

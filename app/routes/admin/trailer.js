@@ -7,6 +7,9 @@ const prisma = new PrismaClient();
 router.get("/", async (req, res) => {
   try {
     const trailers = await prisma.trailer.findMany({
+      include: {
+        media: true,
+      },
       orderBy: [
         { isDeleted: "asc" }, // Non-deleted items first
         { isSold: "asc" }, // Then non-sold items

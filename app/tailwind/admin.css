@@ -217,3 +217,11 @@
 @utility admin-media-title-underline {
   @apply underline decoration-gray-300 decoration-2 underline-offset-4;
 }
+
+@utility admin-media-preview-container {
+  @apply flex flex-col items-center gap-2;
+}
+
+@utility admin-media-preview-image {
+  @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700;
+}

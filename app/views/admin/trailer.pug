@@ -26,7 +26,15 @@ block content
         each trailer in trailers
           tr.admin-table-row
             td.admin-table-td
-              a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
+              if trailer.media && trailer.media.some(m => m.isPrimary && !m.isDeleted)
+                .admin-media-preview-container
+                  img.admin-media-preview-image(
+                    src=trailer.media.find((m) => m.isPrimary && !m.isDeleted).path,
+                    alt=trailer.title
+                  )
+                  a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
+              else
+                a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
             td.admin-table-td
               if trailer.isDeleted
                 span.admin-badge.admin-badge-deleted Deleted
