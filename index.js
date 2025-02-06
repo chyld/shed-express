@@ -3,7 +3,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import basicAuth from "express-basic-auth";
-import homeRouter from "./app/routes/home.js";
+import homeRouter from "./app/routes/public/home.js";
 import adminShedRouter from "./app/routes/admin/shed.js";
 import adminTrailerRouter from "./app/routes/admin/trailer.js";
 import adminMediaRouter from "./app/routes/admin/media.js";

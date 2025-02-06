@@ -1,0 +1,343 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary colors - Forest Greens */
+  --color-primary-dark: oklch(0.3 0.15 150); /* Deep Forest Green */
+  --color-primary: oklch(0.4 0.15 150); /* Pine Green */
+  --color-primary-light: oklch(0.5 0.15 150); /* Sage Green */
+
+  /* Secondary colors - Wood Browns */
+  --color-secondary-dark: oklch(0.35 0.15 80); /* Saddle Brown */
+  --color-secondary: oklch(0.45 0.15 80); /* Sienna */
+  --color-secondary-light: oklch(0.55 0.15 80); /* Peru/Wood Brown */
+
+  /* Accent colors - Earth Tones */
+  --color-accent-dark: oklch(0.3 0.1 90); /* Dark Wood */
+  --color-accent: oklch(0.4 0.1 90); /* Wood Taupe */
+  --color-accent-light: oklch(0.7 0.1 90); /* Burlywood */
+
+  /* Background colors */
+  --color-bg-primary: oklch(0.98 0.02 80); /* Off White */
+  --color-bg-secondary: oklch(0.95 0.02 80); /* Beige */
+  --color-bg-tertiary: oklch(0.9 0.02 80); /* Light Khaki */
+
+  /* Text colors */
+  --color-text-dark: oklch(0.25 0.02 80); /* Dark Brown */
+  --color-text: oklch(0.35 0.02 80); /* Medium Brown */
+  --color-text-light: oklch(0.55 0.02 80); /* Light Brown */
+}
+
+@layer base {
+  /* Base styles */
+  .public-html {
+    @apply h-full scroll-smooth;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text);
+  }
+
+  .public-body {
+    @apply min-h-screen flex flex-col text-text bg-bg-primary;
+  }
+
+  .public-main {
+    @apply flex-1 px-4 py-8;
+  }
+}
+
+@layer components {
+  /* Navigation styles */
+  .public-nav {
+    @apply sticky top-0 z-50;
+    background-color: var(--color-primary);
+  }
+
+  .public-nav-container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  .public-nav-content {
+    @apply flex justify-between items-center py-4;
+  }
+
+  .public-nav-brand-container {
+    @apply flex items-center;
+  }
+
+  .public-nav-brand {
+    @apply text-xl font-bold transition-colors;
+    color: var(--color-bg-primary);
+  }
+
+  .public-nav-links {
+    @apply flex gap-8;
+  }
+
+  .public-nav-link {
+    @apply font-medium py-2 border-b-2 border-transparent transition-all;
+    color: var(--color-bg-primary);
+  }
+
+  .public-nav-link:hover {
+    color: var(--color-accent-light);
+    @apply border-accent-light;
+  }
+
+  /* Footer styles */
+  .public-footer {
+    @apply py-12 px-4 mt-16;
+    background-color: var(--color-primary-dark);
+    color: var(--color-bg-primary);
+  }
+
+  .public-footer-container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .public-footer-content {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-12 mb-12;
+  }
+
+  .public-footer-section {
+    @apply flex flex-col gap-4;
+  }
+
+  .public-footer-title {
+    @apply text-lg font-bold;
+    color: var(--color-secondary-light);
+  }
+
+  .public-footer-text {
+    @apply leading-relaxed;
+    color: var(--color-bg-primary);
+  }
+
+  .public-footer-links {
+    @apply flex flex-col gap-2;
+  }
+
+  .public-footer-link {
+    @apply transition-colors;
+    color: var(--color-accent-light);
+  }
+
+  .public-footer-link:hover {
+    color: var(--color-secondary-light);
+  }
+
+  .public-footer-bottom {
+    @apply border-t pt-8 text-center;
+    border-color: var(--color-primary-light);
+  }
+
+  .public-footer-copyright {
+    @apply text-sm;
+    color: var(--color-bg-secondary);
+  }
+
+  /* Common components */
+  .public-container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  /* Button styles */
+  .public-button {
+    @apply px-4 py-2 rounded transition-colors;
+    background-color: var(--color-secondary);
+    color: var(--color-bg-primary);
+  }
+
+  .public-button:hover {
+    background-color: var(--color-secondary-dark);
+  }
+
+  .public-button-secondary {
+    @apply px-4 py-2 rounded transition-colors;
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+  }
+
+  .public-button-secondary:hover {
+    background-color: var(--color-accent-dark);
+  }
+
+  /* Card styles */
+  .public-card {
+    @apply rounded-lg p-4;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent-light);
+  }
+
+  .public-card-title {
+    @apply font-bold;
+    color: var(--color-primary-dark);
+  }
+
+  /* Section styles */
+  .public-section {
+    @apply py-8;
+  }
+
+  .public-section-title {
+    @apply text-2xl font-bold mb-4;
+    color: var(--color-primary-dark);
+  }
+
+  /* Link styles */
+  .public-link {
+    @apply underline transition-colors;
+    color: var(--color-primary);
+  }
+
+  .public-link:hover {
+    color: var(--color-primary-dark);
+  }
+
+  /* Text styles */
+  .public-text-primary {
+    color: var(--color-primary);
+  }
+
+  .public-text-secondary {
+    color: var(--color-secondary);
+  }
+
+  .public-text-accent {
+    color: var(--color-accent);
+  }
+
+  /* Hero styles */
+  .public-hero {
+    @apply py-20;
+    background-color: var(--color-primary-dark);
+  }
+
+  .public-hero-content {
+    @apply text-center max-w-4xl mx-auto;
+  }
+
+  .public-hero-title {
+    @apply text-5xl font-bold mb-4;
+    color: var(--color-bg-primary);
+  }
+
+  .public-hero-subtitle {
+    @apply text-xl mb-8;
+    color: var(--color-bg-secondary);
+  }
+
+  .public-hero-buttons {
+    @apply flex gap-4 justify-center;
+  }
+
+  /* Category styles */
+  .public-categories {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
+
+  .public-category-card {
+    @apply flex flex-col;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent-light);
+    @apply rounded-lg overflow-hidden;
+  }
+
+  .public-category-image {
+    @apply w-full h-48 object-cover;
+  }
+
+  .public-category-title {
+    @apply text-xl font-bold p-4;
+    color: var(--color-primary-dark);
+  }
+
+  .public-category-text {
+    @apply px-4 pb-4;
+    color: var(--color-text);
+  }
+
+  /* Feature styles */
+  .public-section-alt {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .public-features {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
+
+  .public-feature {
+    @apply text-center p-6;
+  }
+
+  .public-feature-icon {
+    @apply w-16 h-16 mx-auto mb-4;
+    color: var(--color-primary);
+  }
+
+  .public-feature-title {
+    @apply text-xl font-bold mb-2;
+    color: var(--color-primary-dark);
+  }
+
+  .public-feature-text {
+    color: var(--color-text);
+  }
+
+  /* Product styles */
+  .public-products {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
+
+  .public-product-card {
+    @apply flex flex-col;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent-light);
+    @apply rounded-lg overflow-hidden;
+  }
+
+  .public-product-image {
+    @apply w-full h-48 bg-bg-tertiary;
+  }
+
+  .public-product-content {
+    @apply p-4;
+  }
+
+  .public-product-title {
+    @apply text-xl font-bold mb-2;
+    color: var(--color-primary-dark);
+  }
+
+  .public-product-description {
+    @apply mb-4;
+    color: var(--color-text);
+  }
+
+  .public-product-price {
+    @apply text-lg font-bold mb-4;
+    color: var(--color-secondary);
+  }
+
+  /* CTA styles */
+  .public-cta {
+    @apply py-16;
+    background-color: var(--color-primary);
+  }
+
+  .public-cta-content {
+    @apply text-center max-w-3xl mx-auto;
+  }
+
+  .public-cta-title {
+    @apply text-3xl font-bold mb-4;
+    color: var(--color-bg-primary);
+  }
+
+  .public-cta-text {
+    @apply text-lg mb-8;
+    color: var(--color-bg-secondary);
+  }
+
+  .public-cta-buttons {
+    @apply flex gap-4 justify-center;
+  }
+}

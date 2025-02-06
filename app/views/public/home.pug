@@ -1,0 +1,95 @@
+extends _layouts/public
+
+block head
+  link(rel="stylesheet", href="/css/public.css")
+
+block content
+  // Hero Section
+  section.public-hero
+    .public-container
+      .public-hero-content
+        h1.public-hero-title Quality Sheds & Cabins
+        p.public-hero-subtitle Find your perfect outdoor storage solution or dream cabin
+        .public-hero-buttons
+          a.public-button(href="/sheds") Browse Sheds
+          a.public-button-secondary(href="/cabins") View Cabins
+
+  // Featured Categories
+  section.public-section
+    .public-container
+      h2.public-section-title Our Products
+      .public-categories
+        .public-category-card
+          img.public-category-image(
+            src="/images/shed-category.jpg",
+            alt="Storage Sheds"
+          )
+          h3.public-category-title Storage Sheds
+          p.public-category-text Perfect for storing tools, equipment, and outdoor supplies
+          a.public-link(href="/sheds") View Storage Sheds
+
+        .public-category-card
+          img.public-category-image(
+            src="/images/cabin-category.jpg",
+            alt="Cabins"
+          )
+          h3.public-category-title Cabins
+          p.public-category-text Cozy retreats and comfortable living spaces
+          a.public-link(href="/cabins") View Cabins
+
+        .public-category-card
+          img.public-category-image(
+            src="/images/trailer-category.jpg",
+            alt="Trailers"
+          )
+          h3.public-category-title Trailers
+          p.public-category-text Transport your equipment with ease
+          a.public-link(href="/trailers") View Trailers
+
+  // Why Choose Us
+  section.public-section.public-section-alt
+    .public-container
+      h2.public-section-title Why Choose The Shed Place
+      .public-features
+        .public-feature
+          .public-feature-icon
+            // Icon placeholder
+          h3.public-feature-title Quality Craftsmanship
+          p.public-feature-text Built to last with premium materials and attention to detail
+
+        .public-feature
+          .public-feature-icon
+            // Icon placeholder
+          h3.public-feature-title Custom Options
+          p.public-feature-text Personalize your shed or cabin to match your needs
+
+        .public-feature
+          .public-feature-icon
+            // Icon placeholder
+          h3.public-feature-title Expert Support
+          p.public-feature-text Professional guidance from selection to installation
+
+  // Featured Products
+  section.public-section
+    .public-container
+      h2.public-section-title Featured Products
+      .public-products
+        each product in [1, 2, 3]
+          .public-product-card
+            .public-product-image
+              // Image placeholder
+            .public-product-content
+              h3.public-product-title Example Product
+              p.public-product-description High-quality storage solution for your needs
+              .public-product-price $X,XXX
+              a.public-button(href="#") Learn More
+
+  // Call to Action
+  section.public-cta
+    .public-container
+      .public-cta-content
+        h2.public-cta-title Ready to Find Your Perfect Shed?
+        p.public-cta-text Browse our selection or contact us for custom options
+        .public-cta-buttons
+          a.public-button(href="/sheds") View Inventory
+          a.public-button-secondary(href="/contact") Contact Us
