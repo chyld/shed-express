@@ -39,7 +39,8 @@ block content
               else
                 span.admin-badge.admin-badge-repo Repo
             td.admin-table-td
-              a.admin-link(href=`/admin/sheds/${shed.id}`)= shed.title
+              div= shed.title
+              .admin-description= shed.description
             td.admin-table-td= shed.inventoryNumber
             td.admin-table-td #{ shed.sizeWidth }' × #{ shed.sizeLength }'
             td.admin-table-td.admin-price $#{ (shed.basePrice / 100).toFixed(2) }

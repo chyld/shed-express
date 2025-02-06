@@ -25,7 +25,7 @@
 }
 
 @utility admin-table-td {
-  @apply px-4 py-3 text-sm text-gray-900 whitespace-nowrap;
+  @apply px-4 py-3 text-sm text-gray-900;
 }
 
 @utility admin-link {
@@ -122,4 +122,8 @@
 
 @utility admin-main {
   @apply flex-1 container mx-auto px-4 py-8 bg-white my-8 rounded-lg shadow-xl;
+}
+
+.admin-description {
+  @apply text-sm text-gray-500 mt-1 break-words whitespace-normal max-w-[200px];
 }

@@ -64,7 +64,7 @@ router.get("/:type/:id", async (req, res) => {
       return res.status(404).send("Item not found");
     }
 
-    res.render("admin/media/media", {
+    res.render("admin/media", {
       item,
       media,
       type,

@@ -38,7 +38,8 @@ block content
               else
                 span.admin-badge.admin-badge-repo Used
             td.admin-table-td
-              a.admin-link(href=`/admin/trailers/${trailer.id}`)= trailer.title
+              div= trailer.title
+              .admin-description= trailer.description
             td.admin-table-td= trailer.modelNumber
             td.admin-table-td= trailer.vin
             td.admin-table-td= trailer.plateNumber
