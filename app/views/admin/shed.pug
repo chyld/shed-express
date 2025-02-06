@@ -29,10 +29,19 @@ block content
             td.admin-table-td
               if shed.media && shed.media.some(m => m.isPrimary && !m.isDeleted)
                 .admin-media-preview-container
-                  img.admin-media-preview-image(
-                    src=shed.media.find((m) => m.isPrimary && !m.isDeleted).path,
-                    alt=shed.title
-                  )
+                  - const primaryMedia = shed.media.find((m) => m.isPrimary && !m.isDeleted);
+                  if primaryMedia.isPhoto
+                    img.admin-media-preview-image(
+                      src=primaryMedia.path,
+                      alt=shed.title
+                    )
+                  else
+                    video.admin-media-preview-video(
+                      src=primaryMedia.path,
+                      muted,
+                      loop,
+                      autoplay
+                    )
                   a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media
               else
                 a.admin-media-btn(href=`/admin/media/shed/${shed.id}`) Media

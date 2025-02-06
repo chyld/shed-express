@@ -28,10 +28,19 @@ block content
             td.admin-table-td
               if trailer.media && trailer.media.some(m => m.isPrimary && !m.isDeleted)
                 .admin-media-preview-container
-                  img.admin-media-preview-image(
-                    src=trailer.media.find((m) => m.isPrimary && !m.isDeleted).path,
-                    alt=trailer.title
-                  )
+                  - const primaryMedia = trailer.media.find((m) => m.isPrimary && !m.isDeleted);
+                  if primaryMedia.isPhoto
+                    img.admin-media-preview-image(
+                      src=primaryMedia.path,
+                      alt=trailer.title
+                    )
+                  else
+                    video.admin-media-preview-video(
+                      src=primaryMedia.path,
+                      muted,
+                      loop,
+                      autoplay
+                    )
                   a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media
               else
                 a.admin-media-btn(href=`/admin/media/trailer/${trailer.id}`) Media

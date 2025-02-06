@@ -225,3 +225,7 @@
 @utility admin-media-preview-image {
   @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700;
 }
+
+@utility admin-media-preview-video {
+  @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700 bg-gray-900;
+}
