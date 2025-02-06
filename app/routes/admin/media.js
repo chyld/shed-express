@@ -28,37 +28,22 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).array("media"); // No limit specified
 
 // Get media page
 router.get("/:type/:id", async (req, res) => {
   const { type, id } = req.params;
+  const modelName = type === "shed" ? "shed" : "trailer";
 
   try {
-    let item;
-    let media;
-
-    if (type === "shed") {
-      item = await prisma.shed.findUnique({
-        where: { id },
-        include: {
-          media: {
-            orderBy: { createdAt: "desc" },
-          },
+    const item = await prisma[modelName].findUnique({
+      where: { id },
+      include: {
+        media: {
+          orderBy: { createdAt: "desc" },
         },
-      });
-      media = item?.media || [];
-    } else if (type === "trailer") {
-      item = await prisma.trailer.findUnique({
-        where: { id },
-        include: {
-          media: {
-            orderBy: { createdAt: "desc" },
-          },
-        },
-      });
-      media = item?.media || [];
-    }
+      },
+    });
 
     if (!item) {
       return res.status(404).send("Item not found");
@@ -66,7 +51,7 @@ router.get("/:type/:id", async (req, res) => {
 
     res.render("admin/media", {
       item,
-      media,
+      media: item.media || [],
       type,
     });
   } catch (error) {
@@ -76,31 +61,26 @@ router.get("/:type/:id", async (req, res) => {
 });
 
 // Upload new media
-router.post("/:type/:id/upload", upload.single("media"), async (req, res) => {
+router.post("/:type/:id/upload", upload, async (req, res) => {
   const { type, id } = req.params;
-  const file = req.file;
+  const files = req.files;
 
   try {
-    const mediaPath = "/media/" + file.filename;
-    const isPhoto = file.mimetype.startsWith("image/");
+    const modelName = type === "shed" ? "shedMedia" : "trailerMedia";
+    const relationField = type === "shed" ? "shedId" : "trailerId";
 
-    if (type === "shed") {
-      await prisma.shedMedia.create({
-        data: {
-          path: mediaPath,
-          isPhoto,
-          shedId: id,
-        },
-      });
-    } else if (type === "trailer") {
-      await prisma.trailerMedia.create({
-        data: {
-          path: mediaPath,
-          isPhoto,
-          trailerId: id,
-        },
-      });
-    }
+    // Create media entries for all uploaded files
+    await Promise.all(
+      files.map((file) =>
+        prisma[modelName].create({
+          data: {
+            path: "/media/" + file.filename,
+            isPhoto: file.mimetype.startsWith("image/"),
+            [relationField]: id,
+          },
+        }),
+      ),
+    );
 
     res.redirect(`/admin/media/${type}/${id}`);
   } catch (error) {
@@ -112,33 +92,20 @@ router.post("/:type/:id/upload", upload.single("media"), async (req, res) => {
 // Delete media
 router.post("/:type/:id/delete/:mediaId", async (req, res) => {
   const { type, id, mediaId } = req.params;
+  const modelName = type === "shed" ? "shedMedia" : "trailerMedia";
 
   try {
-    if (type === "shed") {
-      const media = await prisma.shedMedia.findUnique({
-        where: { id: mediaId },
-      });
-      await prisma.shedMedia.update({
-        where: { id: mediaId },
-        data: {
-          isDeleted: !media.isDeleted,
-          // If we're setting isDeleted to true, then isPrimary should be false
-          isPrimary: media.isDeleted ? media.isPrimary : false,
-        },
-      });
-    } else if (type === "trailer") {
-      const media = await prisma.trailerMedia.findUnique({
-        where: { id: mediaId },
-      });
-      await prisma.trailerMedia.update({
-        where: { id: mediaId },
-        data: {
-          isDeleted: !media.isDeleted,
-          // If we're setting isDeleted to true, then isPrimary should be false
-          isPrimary: media.isDeleted ? media.isPrimary : false,
-        },
-      });
-    }
+    const media = await prisma[modelName].findUnique({
+      where: { id: mediaId },
+    });
+
+    await prisma[modelName].update({
+      where: { id: mediaId },
+      data: {
+        isDeleted: !media.isDeleted,
+        isPrimary: media.isDeleted ? media.isPrimary : false,
+      },
+    });
 
     res.redirect(`/admin/media/${type}/${id}`);
   } catch (error) {
@@ -150,55 +117,38 @@ router.post("/:type/:id/delete/:mediaId", async (req, res) => {
 // Toggle primary status
 router.post("/:type/:id/primary/:mediaId", async (req, res) => {
   const { type, id, mediaId } = req.params;
+  const modelName = type === "shed" ? "shedMedia" : "trailerMedia";
+  const relationField = type === "shed" ? "shedId" : "trailerId";
 
   try {
-    if (type === "shed") {
-      // Start a transaction to ensure data consistency
-      await prisma.$transaction(async (tx) => {
-        // First, remove primary status from all media for this shed
-        await tx.shedMedia.updateMany({
+    await prisma.$transaction(async (tx) => {
+      // Get current media to check its status
+      const media = await tx[modelName].findUnique({
+        where: { id: mediaId },
+      });
+
+      if (media.isPrimary) {
+        // If it's primary, just remove its primary status
+        await tx[modelName].update({
+          where: { id: mediaId },
+          data: { isPrimary: false },
+        });
+      } else {
+        // If it's not primary, remove other primaries and set this one
+        await tx[modelName].updateMany({
           where: {
-            shedId: id,
+            [relationField]: id,
             isPrimary: true,
           },
           data: { isPrimary: false },
         });
 
-        // Get current media to check its status
-        const media = await tx.shedMedia.findUnique({
+        await tx[modelName].update({
           where: { id: mediaId },
+          data: { isPrimary: true },
         });
-
-        // Only set to primary if it wasn't primary before
-        if (!media.isPrimary) {
-          await tx.shedMedia.update({
-            where: { id: mediaId },
-            data: { isPrimary: true },
-          });
-        }
-      });
-    } else if (type === "trailer") {
-      await prisma.$transaction(async (tx) => {
-        await tx.trailerMedia.updateMany({
-          where: {
-            trailerId: id,
-            isPrimary: true,
-          },
-          data: { isPrimary: false },
-        });
-
-        const media = await tx.trailerMedia.findUnique({
-          where: { id: mediaId },
-        });
-
-        if (!media.isPrimary) {
-          await tx.trailerMedia.update({
-            where: { id: mediaId },
-            data: { isPrimary: true },
-          });
-        }
-      });
-    }
+      }
+    });
 
     res.redirect(`/admin/media/${type}/${id}`);
   } catch (error) {

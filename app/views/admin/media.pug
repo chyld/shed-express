@@ -1,50 +1,66 @@
 extends _layouts/admin
 
+block head
+  link(rel="stylesheet", href="/css/admin.css")
+
 block content
-  div
-    div
-      h1 Media Manager for #{ type === 'shed' ? 'Shed' : 'Trailer' }: #{ item.title }
-      a(href=`/admin/${type}s/${item.id}`) Back to #{ type }
+  .admin-media-container
+    .admin-media-header
+      h1.admin-media-title
+        | #{ type === 'shed' ? 'Shed' : 'Trailer' } Media Manager : &nbsp;
+        span.admin-media-title-underline #{ item.title }
 
-  form(
-    action=`/admin/media/${type}/${item.id}/upload`,
-    method="POST",
-    enctype="multipart/form-data"
-  )
-    div
-      input(type="file", name="media", accept="image/*,video/*")
-      button(type="submit") Upload Files
-
-  div
-    each mediaItem in media
-      div(
-        style=mediaItem.isDeleted ? "border: 2px solid red; padding: 10px; margin: 10px 0;" : "padding: 10px; margin: 10px 0;"
+    .admin-media-upload
+      form(
+        action=`/admin/media/${type}/${item.id}/upload`,
+        method="POST",
+        enctype="multipart/form-data"
       )
-        if mediaItem.isPhoto
-          img(src=mediaItem.path, alt="Media")
-        else
-          video(controls)
-            source(src=mediaItem.path)
+        input.admin-media-file-input(
+          type="file",
+          name="media",
+          accept="image/*,video/*",
+          multiple
+        )
+        button.admin-media-button(type="submit") Upload Files
 
-        div
-          if mediaItem.isPrimary
-            span(style="color: green; margin-right: 10px") ★ Primary
-          span= mediaItem.isPhoto ? "Photo" : "Video"
-          span(style="margin-left: 10px")= mediaItem.isDeleted ? "DELETED" : ""
-
-        div(style="display: flex; gap: 10px; margin-top: 10px")
-          form(
-            action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
-            method="POST"
+    if media.length > 0
+      .admin-media-grid
+        each mediaItem in media
+          div(
+            class=`admin-media-card ${mediaItem.isDeleted ? 'admin-media-card-deleted' : ''}`
           )
-            button(type="submit")= mediaItem.isDeleted ? "Restore" : "Delete"
+            if mediaItem.isPhoto
+              img.admin-media-image(src=mediaItem.path, alt="Media")
+            else
+              video.admin-media-video(controls)
+                source(src=mediaItem.path)
 
-          if !mediaItem.isDeleted
-            form(
-              action=`/admin/media/${type}/${item.id}/primary/${mediaItem.id}`,
-              method="POST"
-            )
-              button(type="submit")= mediaItem.isPrimary ? "Remove Primary" : "Set Primary"
+            .admin-media-info
+              .admin-media-status
+                span= mediaItem.isPhoto ? "Photo" : "Video"
+                if mediaItem.isPrimary
+                  span.admin-media-primary PRIMARY
+                if mediaItem.isDeleted
+                  span.admin-media-deleted-tag DELETED
+              .admin-media-actions
+                form(
+                  action=`/admin/media/${type}/${item.id}/delete/${mediaItem.id}`,
+                  method="POST"
+                )
+                  button(
+                    type="submit",
+                    class=`admin-media-button ${mediaItem.isDeleted ? '' : 'admin-media-button-danger'}`
+                  )= mediaItem.isDeleted ? "Restore" : "Delete"
 
-  if media.length === 0
-    p No media found. Upload some files to get started.
+                if !mediaItem.isDeleted
+                  form(
+                    action=`/admin/media/${type}/${item.id}/primary/${mediaItem.id}`,
+                    method="POST"
+                  )
+                    button.admin-media-button.admin-media-button-primary(
+                      type="submit"
+                    )= mediaItem.isPrimary ? "Remove Primary" : "Set Primary"
+    else
+      .admin-media-empty
+        p No media found. Upload some files to get started.

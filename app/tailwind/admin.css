@@ -127,3 +127,93 @@
 .admin-description {
   @apply text-sm text-gray-500 mt-1 break-words whitespace-normal max-w-[200px];
 }
+
+@utility admin-media-container {
+  @apply max-w-7xl mx-auto p-6 space-y-6;
+}
+
+@utility admin-media-header {
+  @apply flex justify-between items-center;
+}
+
+@utility admin-media-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+@utility admin-media-back {
+  @apply text-sm text-gray-600 hover:text-gray-900;
+}
+
+@utility admin-media-upload {
+  @apply bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex items-center gap-4;
+}
+
+@utility admin-media-file-input {
+  @apply block w-full text-sm text-gray-900 file:mr-4 file:py-2 file:px-4 
+         file:rounded-md file:border-0 file:text-sm file:font-medium
+         file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100;
+}
+
+@utility admin-media-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+@utility admin-media-card {
+  @apply bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200;
+}
+
+@utility admin-media-card-deleted {
+  @apply border-2 border-red-300 bg-red-50;
+}
+
+@utility admin-media-image {
+  @apply w-full h-48 object-cover;
+}
+
+@utility admin-media-video {
+  @apply w-full h-48 object-contain bg-gray-900;
+}
+
+@utility admin-media-info {
+  @apply p-4 space-y-2;
+}
+
+@utility admin-media-status {
+  @apply flex items-center gap-2 text-sm;
+}
+
+@utility admin-media-primary {
+  @apply text-green-600 font-medium;
+}
+
+@utility admin-media-deleted-tag {
+  @apply text-red-600 font-medium;
+}
+
+@utility admin-media-actions {
+  @apply flex gap-2 mt-2;
+}
+
+@utility admin-media-button {
+  @apply px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-50;
+}
+
+@utility admin-media-button-danger {
+  @apply border-red-300 text-red-600 hover:bg-red-50;
+}
+
+@utility admin-media-button-primary {
+  @apply border-green-300 text-green-600 hover:bg-green-50;
+}
+
+@utility admin-media-empty {
+  @apply text-center py-8 text-gray-500 bg-white rounded-lg border border-gray-200;
+}
+
+@utility admin-media-title-link {
+  @apply text-blue-600 hover:text-blue-800 underline text-sm;
+}
+
+@utility admin-media-title-underline {
+  @apply underline decoration-gray-300 decoration-2 underline-offset-4;
+}
