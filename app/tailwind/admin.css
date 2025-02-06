@@ -124,7 +124,7 @@
   @apply flex-1 container mx-auto px-4 py-8 bg-white my-8 rounded-lg shadow-xl;
 }
 
-.admin-description {
+@utility admin-description {
   @apply text-sm text-gray-500 mt-1 break-words whitespace-normal max-w-[200px];
 }
 
@@ -228,4 +228,78 @@
 
 @utility admin-media-preview-video {
   @apply w-16 h-16 object-cover rounded-sm shadow-sm ring-2 ring-gray-700 bg-gray-900;
+}
+
+@utility admin-form {
+  @apply w-full max-w-4xl mx-auto;
+}
+
+@utility admin-form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+@utility admin-form-group {
+  @apply space-y-2;
+}
+
+@utility admin-form-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+@utility admin-form-input {
+  @apply block w-full rounded-md border-gray-300 shadow-sm 
+         focus:border-blue-500 focus:ring-blue-500;
+}
+
+@utility admin-form-textarea {
+  @apply block w-full rounded-md border-gray-300 shadow-sm 
+         focus:border-blue-500 focus:ring-blue-500 h-32;
+}
+
+@utility admin-form-colors {
+  @apply space-y-4;
+}
+
+@utility admin-form-color {
+  @apply space-y-1;
+}
+
+@utility admin-form-checkboxes {
+  @apply space-y-2 mt-1;
+}
+
+@utility admin-form-checkbox {
+  @apply flex items-center space-x-2;
+}
+
+@utility admin-form-checkbox-input {
+  @apply h-4 w-4 rounded border-gray-300 text-blue-600 
+         focus:ring-blue-500;
+}
+
+@utility admin-form-actions {
+  @apply flex justify-end space-x-4 mt-8 col-span-full;
+}
+
+@utility admin-button-primary {
+  @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 
+         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+@utility admin-button-secondary {
+  @apply px-4 py-2 bg-white text-gray-700 rounded-md border border-gray-300 
+         hover:bg-gray-50 focus:outline-none focus:ring-2 
+         focus:ring-blue-500 focus:ring-offset-2;
+}
+
+@utility admin-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+@utility admin-form-section {
+  @apply border border-gray-200 rounded-lg p-6 mb-6 bg-gray-100;
+}
+
+@utility admin-form-section-title {
+  @apply text-lg font-medium text-gray-900 mb-4;
 }

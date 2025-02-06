@@ -5,7 +5,9 @@ block head
 
 block content
   .admin-container
-    h1.admin-title Shed Listing
+    .admin-header
+      h1.admin-title Shed Listing
+      a.admin-button-primary(href="/admin/sheds/new") New Shed
 
     table.admin-table
       thead.admin-table-header
@@ -56,7 +58,8 @@ block content
               else
                 span.admin-badge.admin-badge-repo Repo
             td.admin-table-td
-              div= shed.title
+              div
+                a.admin-link(href=`/admin/sheds/${shed.id}/edit`)= shed.title
               .admin-description= shed.description
             td.admin-table-td= shed.inventoryNumber
             td.admin-table-td #{ shed.sizeWidth }' × #{ shed.sizeLength }'

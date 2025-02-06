@@ -1,0 +1,160 @@
+extends _layouts/admin
+
+block head
+  link(rel="stylesheet", href="/css/admin.css")
+
+block content
+  .admin-container
+    h1.admin-title Shed: #{ shed.title || 'New Shed' }
+
+    form.admin-form(
+      method="POST",
+      action=shed.id ? `/admin/sheds/${shed.id}` : "/admin/sheds/new"
+    )
+      .admin-form-section
+        h2.admin-form-section-title Basic Information
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="title") Title
+            input#title.admin-form-input(
+              type="text",
+              name="title",
+              value=shed.title,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="description") Description
+            textarea#description.admin-form-textarea(
+              name="description",
+              required
+            )= shed.description
+
+          .admin-form-group
+            label.admin-form-label(for="inventoryNumber") Inventory Number
+            input#inventoryNumber.admin-form-input(
+              type="text",
+              name="inventoryNumber",
+              value=shed.inventoryNumber,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="shedType") Type
+            input#shedType.admin-form-input(
+              type="text",
+              name="shedType",
+              value=shed.shedType,
+              required
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Dimensions
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="sizeWidth") Width (feet)
+            input#sizeWidth.admin-form-input(
+              type="number",
+              name="sizeWidth",
+              value=shed.sizeWidth,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="sizeLength") Length (feet)
+            input#sizeLength.admin-form-input(
+              type="number",
+              name="sizeLength",
+              value=shed.sizeLength,
+              required
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Pricing
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="basePrice") Base Price (cents)
+            input#basePrice.admin-form-input(
+              type="number",
+              name="basePrice",
+              value=shed.basePrice,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="optionsPrice") Options Price (cents)
+            input#optionsPrice.admin-form-input(
+              type="number",
+              name="optionsPrice",
+              value=shed.optionsPrice,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="salePercent") Sale Percent
+            input#salePercent.admin-form-input(
+              type="number",
+              name="salePercent",
+              value=shed.salePercent,
+              min="0",
+              max="100"
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Colors
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="colorRoof") Roof
+            input#colorRoof.admin-form-input(
+              type="text",
+              name="colorRoof",
+              value=shed.colorRoof,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="colorSiding") Siding
+            input#colorSiding.admin-form-input(
+              type="text",
+              name="colorSiding",
+              value=shed.colorSiding,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="colorTrim") Trim
+            input#colorTrim.admin-form-input(
+              type="text",
+              name="colorTrim",
+              value=shed.colorTrim,
+              required
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Status
+        .admin-form-checkboxes
+          .admin-form-checkbox
+            input#isNew.admin-form-checkbox-input(
+              type="checkbox",
+              name="isNew",
+              checked=shed.isNew
+            )
+            label.admin-form-label(for="isNew") New
+          .admin-form-checkbox
+            input#isSold.admin-form-checkbox-input(
+              type="checkbox",
+              name="isSold",
+              checked=shed.isSold
+            )
+            label.admin-form-label(for="isSold") Sold
+          .admin-form-checkbox
+            input#isDeleted.admin-form-checkbox-input(
+              type="checkbox",
+              name="isDeleted",
+              checked=shed.isDeleted
+            )
+            label.admin-form-label(for="isDeleted") Deleted
+
+      .admin-form-actions
+        button.admin-button-primary(type="submit") Save Changes
+        a.admin-button-secondary(href="/admin/sheds") Cancel

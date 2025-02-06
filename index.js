@@ -20,6 +20,7 @@ const auth = basicAuth({
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "app/views"));
 app.set("view engine", "pug");
 
