@@ -47,8 +47,8 @@
 @layer components {
   /* Navigation styles */
   .public-nav {
-    @apply sticky top-0 z-50;
-    background-color: var(--color-primary);
+    @apply sticky top-0 z-50 shadow-md;
+    background-color: var(--color-primary-dark);
   }
 
   .public-nav-container {
@@ -56,30 +56,108 @@
   }
 
   .public-nav-content {
-    @apply flex justify-between items-center py-4;
+    @apply flex items-center justify-between py-4;
+    min-height: 4rem;
   }
 
   .public-nav-brand-container {
-    @apply flex items-center;
+    @apply flex items-center z-20;
   }
 
   .public-nav-brand {
-    @apply text-xl font-bold transition-colors;
+    @apply text-xl font-bold;
     color: var(--color-bg-primary);
   }
 
+  /* Hamburger Button */
+  .public-nav-hamburger {
+    @apply flex flex-col justify-center items-center w-10 h-10 z-20;
+    @apply lg:hidden;
+    @apply relative z-50;
+  }
+
+  .public-nav-hamburger-line {
+    @apply w-6 h-0.5 mb-1 transition-all duration-300 ease-in-out;
+    background-color: var(--color-bg-primary);
+  }
+
+  .public-nav-hamburger-active {
+    .public-nav-hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .public-nav-hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .public-nav-hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+
+  /* Navigation Links */
   .public-nav-links {
-    @apply flex gap-8;
+    @apply fixed inset-0 flex-col items-center justify-start bg-primary-dark;
+    @apply -translate-x-full transition-transform duration-300 ease-in-out;
+    @apply lg:static lg:flex lg:flex-row lg:translate-x-0 lg:gap-8 lg:bg-transparent;
+
+    /* Mobile styles */
+    @media (max-width: 1023px) {
+      @apply pt-20 pb-8 px-4;
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
+
+  .public-nav-mobile-links {
+    @apply flex flex-col w-full;
+
+    @media (min-width: 1024px) {
+      @apply flex-row items-center gap-8;
+    }
   }
 
   .public-nav-link {
-    @apply font-medium py-2 border-b-2 border-transparent transition-all;
+    @apply font-medium text-lg transition-colors relative;
+    @apply lg:text-base;
     color: var(--color-bg-primary);
+
+    /* Mobile styles */
+    @media (max-width: 1023px) {
+      @apply py-4 px-6 w-full text-center border-b border-primary-light;
+
+      &:last-child {
+        @apply border-b-0;
+      }
+
+      &:hover {
+        background-color: var(--color-primary);
+      }
+    }
+
+    /* Desktop underline effect */
+    @media (min-width: 1024px) {
+      @apply border-none;
+
+      &::after {
+        content: "";
+        @apply absolute left-0 bottom-0 w-0 h-0.5 transition-all duration-300;
+        background-color: var(--color-accent-light);
+      }
+
+      &:hover::after {
+        @apply w-full;
+      }
+    }
   }
 
-  .public-nav-link:hover {
-    color: var(--color-accent-light);
-    @apply border-accent-light;
+  .public-nav-links-active {
+    @apply translate-x-0;
+  }
+
+  /* Prevent body scroll when menu is open */
+  .public-body-no-scroll {
+    @apply overflow-hidden fixed inset-0;
   }
 
   /* Footer styles */
@@ -339,5 +417,95 @@
 
   .public-cta-buttons {
     @apply flex gap-4 justify-center;
+  }
+}
+
+/* Footer Mobile Styles */
+@utility public-footer {
+  @apply py-8 px-4 mt-16;
+  background-color: var(--color-primary-dark);
+  color: var(--color-bg-primary);
+}
+
+@utility public-footer-container {
+  @apply max-w-7xl mx-auto;
+}
+
+@utility public-footer-content {
+  @apply grid gap-8;
+  /* Mobile-first grid */
+  grid-template-columns: 1fr;
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Desktop and up */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@utility public-footer-section {
+  @apply flex flex-col gap-4;
+}
+
+@utility public-footer-section-mobile {
+  @apply mb-8;
+  /* Remove margin on larger screens */
+  @media (min-width: 768px) {
+    @apply mb-0;
+  }
+}
+
+@utility public-footer-title {
+  @apply text-lg font-bold;
+  color: var(--color-secondary-light);
+}
+
+@utility public-footer-title-mobile {
+  @apply mb-2;
+  /* Add border and padding on mobile */
+  @media (max-width: 767px) {
+    @apply border-b pb-2;
+    border-color: var(--color-primary-light);
+  }
+}
+
+@utility public-footer-text {
+  @apply leading-relaxed text-sm;
+  color: var(--color-bg-primary);
+}
+
+@utility public-footer-links {
+  @apply flex flex-col gap-2;
+}
+
+@utility public-footer-link {
+  @apply transition-colors text-sm hover:text-secondary-light;
+  color: var(--color-accent-light);
+}
+
+@utility public-footer-bottom {
+  @apply border-t mt-8 pt-8 text-center;
+  border-color: var(--color-primary-light);
+}
+
+@utility public-footer-copyright {
+  @apply text-sm;
+  color: var(--color-bg-secondary);
+}
+
+/* Add touch-friendly spacing for mobile */
+@media (max-width: 767px) {
+  @utility public-footer-link {
+    @apply py-2;
+  }
+
+  @utility public-footer-text {
+    @apply mb-4;
+  }
+
+  @utility public-footer-copyright {
+    @apply text-xs px-4;
   }
 }

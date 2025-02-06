@@ -1,33 +1,58 @@
 footer.public-footer
   .public-footer-container
     .public-footer-content
-      .public-footer-section
-        h3.public-footer-title Contact Us
+      // Company Info Section
+      .public-footer-section.public-footer-section-mobile
+        h3.public-footer-title.public-footer-title-mobile About The Shed Place
         p.public-footer-text
+          | Your trusted source for quality sheds, trailers,
+          | metal buildings, and play sets in Hohenwald, TN.
+        p.public-footer-text
+          | 511 E Main Street
+          br
+          | Hohenwald, TN 38462
+
+      // Products Section
+      .public-footer-section.public-footer-section-mobile
+        h3.public-footer-title.public-footer-title-mobile Our Products
+        .public-footer-links
+          a.public-footer-link(href="/sheds") Sheds
+          a.public-footer-link(href="/trailers") Trailers
+          a.public-footer-link(href="/metal-buildings") Metal Buildings
+          a.public-footer-link(href="/play-sets") Play Sets
+
+      // Contact Section
+      .public-footer-section.public-footer-section-mobile
+        h3.public-footer-title.public-footer-title-mobile Contact & Hours
+        p.public-footer-text
+          strong Contact:
+          br
           | Trese Anderson
           br
           | (931) 324-1199
           br
           | shedplace@gmail.com
-          br
-          a.public-footer-link(href="http://www.hohenwaldsheds.com") www.hohenwaldsheds.com
-
-      .public-footer-section
-        h3.public-footer-title Quick Links
-        .public-footer-links
-          a.public-footer-link(href="/sheds") Sheds
-          a.public-footer-link(href="/trailers") Trailers
-          a.public-footer-link(href="/financing") Financing
-          a.public-footer-link(href="/contact") Contact
-
-      .public-footer-section
-        h3.public-footer-title Hours
         p.public-footer-text
+          strong Hours:
+          br
           | Monday - Friday: 9am - 6pm
           br
           | Saturday: 10am - 4pm
           br
           | Sunday: Closed
 
+      // Quick Links Section
+      .public-footer-section.public-footer-section-mobile
+        h3.public-footer-title.public-footer-title-mobile Quick Links
+        .public-footer-links
+          a.public-footer-link(href="/") Home
+          a.public-footer-link(href="/about") About Us
+          a.public-footer-link(href="/contact") Contact
+          a.public-footer-link(
+            href="http://www.hohenwaldsheds.com",
+            target="_blank",
+            rel="noopener"
+          ) Website
+
     .public-footer-bottom
-      p.public-footer-copyright &copy; 2025 The Shed Place. All rights reserved.
+      p.public-footer-copyright &copy; #{ new Date().getFullYear() } The Shed Place. All rights reserved.
