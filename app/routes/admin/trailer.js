@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    res.render("admin/trailer/trailer_list", { trailers });
+    res.render("admin/trailer", { trailers });
   } catch (error) {
     console.error("Error fetching trailers:", error);
     res.status(500).render("error", { message: "Error loading trailers" });

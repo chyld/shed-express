@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    res.render("admin/shed/shed_list", { sheds });
+    res.render("admin/shed", { sheds });
   } catch (error) {
     console.error("Error fetching sheds:", error);
     res.status(500).render("error", { message: "Error loading sheds" });

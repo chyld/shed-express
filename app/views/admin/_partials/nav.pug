@@ -1,23 +1,12 @@
-nav.bg-gray-800.shadow-lg
-  .max-w-7xl.mx-auto.px-4
-    .flex.items-center.justify-between.h-16
+nav.admin-nav
+  .admin-nav-container
+    .admin-nav-content
       // Logo/Brand section
       .flex.items-center
-        a.text-white.font-bold.text-xl(href="/") Admin Panel
+        a.admin-nav-brand(href="/") Admin Panel
 
       // Navigation Links
-      .flex.space-x-8
-        a.text-gray-300.px-3.py-2.rounded-md.text-sm.font-medium(
-          href="/",
-          class="hover:text-white hover:bg-gray-700"
-        ) Home
-
-        a.text-gray-300.px-3.py-2.rounded-md.text-sm.font-medium(
-          href="/admin/sheds",
-          class="hover:text-white hover:bg-gray-700"
-        ) Shed Administration
-
-        a.text-gray-300.px-3.py-2.rounded-md.text-sm.font-medium(
-          href="/admin/trailers",
-          class="hover:text-white hover:bg-gray-700"
-        ) Trailer Administration
+      .admin-nav-links
+        a.admin-nav-link(href="/") Home
+        a.admin-nav-link(href="/admin/sheds") Shed Administration
+        a.admin-nav-link(href="/admin/trailers") Trailer Administration

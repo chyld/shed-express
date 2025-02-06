@@ -71,3 +71,55 @@
 @utility admin-colors-empty {
   @apply text-sm text-gray-400 italic;
 }
+
+@utility admin-nav {
+  @apply bg-gray-800 shadow-lg;
+}
+
+@utility admin-nav-container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+@utility admin-nav-content {
+  @apply flex items-center justify-between h-16;
+}
+
+@utility admin-nav-brand {
+  @apply text-white font-bold text-xl;
+}
+
+@utility admin-nav-links {
+  @apply flex space-x-8;
+}
+
+@utility admin-nav-link {
+  @apply text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700;
+}
+
+@utility admin-footer {
+  @apply bg-gray-800 mt-auto;
+}
+
+@utility admin-footer-container {
+  @apply max-w-7xl mx-auto px-4 py-4;
+}
+
+@utility admin-footer-content {
+  @apply flex items-center justify-center;
+}
+
+@utility admin-footer-text {
+  @apply text-gray-300 text-sm;
+}
+
+@utility admin-html {
+  @apply h-full;
+}
+
+@utility admin-body {
+  @apply bg-gray-900 min-h-full flex flex-col;
+}
+
+@utility admin-main {
+  @apply flex-1 container mx-auto px-4 py-8 bg-white my-8 rounded-lg shadow-xl;
+}
