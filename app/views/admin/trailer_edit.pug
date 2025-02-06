@@ -1,0 +1,139 @@
+extends _layouts/admin
+
+block head
+  link(rel="stylesheet", href="/css/admin.css")
+
+block content
+  .admin-container
+    h1.admin-title Trailer: #{ trailer.title || 'New Trailer' }
+
+    form.admin-form(
+      method="POST",
+      action=trailer.id ? `/admin/trailers/${trailer.id}` : "/admin/trailers/new"
+    )
+      .admin-form-section
+        h2.admin-form-section-title Basic Information
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="title") Title
+            input#title.admin-form-input(
+              type="text",
+              name="title",
+              value=trailer.title,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="description") Description
+            textarea#description.admin-form-textarea(
+              name="description",
+              required
+            )= trailer.description
+
+          .admin-form-group
+            label.admin-form-label(for="modelNumber") Model Number
+            input#modelNumber.admin-form-input(
+              type="text",
+              name="modelNumber",
+              value=trailer.modelNumber,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="plateNumber") Plate Number
+            input#plateNumber.admin-form-input(
+              type="text",
+              name="plateNumber",
+              value=trailer.plateNumber,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="vin") VIN
+            input#vin.admin-form-input(
+              type="text",
+              name="vin",
+              value=trailer.vin,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="trailerType") Type
+            input#trailerType.admin-form-input(
+              type="text",
+              name="trailerType",
+              value=trailer.trailerType,
+              required
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Dimensions
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="sizeWidth") Width (feet)
+            input#sizeWidth.admin-form-input(
+              type="number",
+              name="sizeWidth",
+              value=trailer.sizeWidth,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="sizeLength") Length (feet)
+            input#sizeLength.admin-form-input(
+              type="number",
+              name="sizeLength",
+              value=trailer.sizeLength,
+              required
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Pricing
+        .admin-form-grid
+          .admin-form-group
+            label.admin-form-label(for="price") Price (cents)
+            input#price.admin-form-input(
+              type="number",
+              name="price",
+              value=trailer.price,
+              required
+            )
+
+          .admin-form-group
+            label.admin-form-label(for="salePercent") Sale Percent
+            input#salePercent.admin-form-input(
+              type="number",
+              name="salePercent",
+              value=trailer.salePercent,
+              min="0",
+              max="100"
+            )
+
+      .admin-form-section
+        h2.admin-form-section-title Status
+        .admin-form-checkboxes
+          .admin-form-checkbox
+            input#isNew.admin-form-checkbox-input(
+              type="checkbox",
+              name="isNew",
+              checked=trailer.isNew
+            )
+            label.admin-form-label(for="isNew") New
+          .admin-form-checkbox
+            input#isSold.admin-form-checkbox-input(
+              type="checkbox",
+              name="isSold",
+              checked=trailer.isSold
+            )
+            label.admin-form-label(for="isSold") Sold
+          .admin-form-checkbox
+            input#isDeleted.admin-form-checkbox-input(
+              type="checkbox",
+              name="isDeleted",
+              checked=trailer.isDeleted
+            )
+            label.admin-form-label(for="isDeleted") Deleted
+
+      .admin-form-actions
+        button.admin-button-primary(type="submit") Save Changes
+        a.admin-button-secondary(href="/admin/trailers") Cancel

@@ -5,7 +5,9 @@ block head
 
 block content
   .admin-container
-    h1.admin-title Trailer Listing
+    .admin-header
+      h1.admin-title Trailer Listing
+      a.admin-button-primary(href="/admin/trailers/new") New Trailer
 
     table.admin-table
       thead.admin-table-header
@@ -55,7 +57,8 @@ block content
               else
                 span.admin-badge.admin-badge-repo Used
             td.admin-table-td
-              div= trailer.title
+              div
+                a.admin-link(href=`/admin/trailers/${trailer.id}/edit`)= trailer.title
               .admin-description= trailer.description
             td.admin-table-td= trailer.modelNumber
             td.admin-table-td= trailer.vin
