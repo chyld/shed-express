@@ -4,4 +4,43 @@ block head
   link(rel="stylesheet", href="/css/shed-trailer.css")
 
 block content
-  h1 sheds
+  main.stl-container
+    header.stl-header
+      h1.stl-title Available Sheds (#{ sheds ? sheds.length : 0 })
+
+    if sheds && sheds.length
+      section.stl-grid(role="grid")
+        each shed in sheds
+          article.stl-item(role="gridcell")
+            .stl-media
+              if shed.media && shed.media[0]
+                if shed.media[0].isPhoto
+                  img.stl-img(
+                    src=shed.media[0].path,
+                    alt=shed.title,
+                    loading="lazy"
+                  )
+                else
+                  video.stl-vid(
+                    src=shed.media[0].path,
+                    controls,
+                    muted,
+                    preload="metadata"
+                  )
+              else
+                .stl-no-media
+                  span Photo not available
+
+            .stl-details
+              h2.stl-name= shed.title
+              - const total = shed.basePrice + shed.optionsPrice;
+              p.stl-size #{ shed.sizeWidth }' × #{ shed.sizeLength }'
+              if shed.salePercent
+                .stl-prices
+                  p.stl-old $#{ (total / 100).toFixed(2) }
+                  p.stl-tag #{ shed.salePercent }% off
+                  p.stl-new $#{ (total * (1 - shed.salePercent/100) / 100).toFixed(2) }
+              else
+                p.stl-price $#{ (total / 100).toFixed(2) }
+    else
+      p.stl-empty No sheds currently available.

@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* Shed Trailer List */
+/* These are the styles for the shed and trailer list pages */
+
+/* Layout */
+@utility stl-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+@utility stl-header {
+  @apply mb-8 text-center sm:text-left;
+}
+
+@utility stl-title {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900;
+}
+
+@utility stl-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Card */
+@utility stl-item {
+  @apply flex flex-col bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300;
+}
+
+@utility stl-media {
+  @apply relative aspect-[4/3] w-full overflow-hidden bg-gray-100;
+}
+
+@utility stl-img {
+  @apply w-full h-full object-cover;
+}
+
+@utility stl-vid {
+  @apply w-full h-full object-contain bg-gray-900;
+}
+
+@utility stl-no-media {
+  @apply w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-sm font-medium;
+}
+
+/* Content */
+@utility stl-details {
+  @apply p-4 flex flex-col gap-2;
+}
+
+@utility stl-name {
+  @apply text-xl font-semibold text-gray-900 line-clamp-2;
+}
+
+@utility stl-size {
+  @apply text-sm text-gray-600;
+}
+
+/* Pricing */
+@utility stl-prices {
+  @apply flex flex-wrap items-baseline gap-x-2 gap-y-1 mt-1;
+}
+
+@utility stl-price {
+  @apply text-xl font-bold text-emerald-600 tracking-tight;
+}
+
+@utility stl-old {
+  @apply text-base text-gray-500 line-through italic;
+}
+
+@utility stl-tag {
+  @apply text-base font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md;
+}
+
+@utility stl-new {
+  @apply text-xl font-extrabold text-emerald-600 tracking-tight;
+}
+
+@utility stl-empty {
+  @apply text-center py-12 text-gray-500 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300;
+}

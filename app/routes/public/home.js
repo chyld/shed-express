@@ -1,13 +1,40 @@
 import express from "express";
+import { PrismaClient } from "@prisma/client";
 
 const router = express.Router();
+const prisma = new PrismaClient();
 
 router.get("/", (req, res) => {
   res.render("public/home");
 });
 
-router.get("/sheds", (req, res) => {
-  res.render("public/sheds");
+router.get("/sheds", async (req, res) => {
+  try {
+    const sheds = await prisma.shed.findMany({
+      where: {
+        isDeleted: false,
+        isSold: false,
+      },
+      include: {
+        media: {
+          where: {
+            isPrimary: true,
+            isDeleted: false,
+          },
+        },
+      },
+      orderBy: [
+        { sizeWidth: "asc" },
+        { sizeLength: "asc" },
+        { createdAt: "desc" },
+      ],
+    });
+
+    res.render("public/sheds", { sheds });
+  } catch (error) {
+    console.error("Error fetching sheds:", error);
+    res.status(500).send("Error loading sheds");
+  }
 });
 
 router.get("/trailers", (req, res) => {
