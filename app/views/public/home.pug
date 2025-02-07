@@ -4,4 +4,142 @@ block head
   link(rel="stylesheet", href="/css/generic.css")
 
 block content
-  h1.lol home
+  .home-container
+    // Hero Section
+    section.home-hero
+      .home-hero-content
+        img.home-hero-logo(
+          src="/assets/logos/light.svg",
+          alt="The Shed Place Logo"
+        )
+        h1.home-hero-title Quality Outdoor Structures for Every Need
+        p.home-hero-subtitle
+          | From storage solutions to recreational spaces, we provide premium sheds,
+          | trailers, metal buildings, and play sets in Hohenwald, Tennessee.
+
+    // Featured Categories
+    section.home-categories
+      h2.home-section-title Our Products
+      .home-categories-grid
+        // Sheds
+        a.home-category-card(href="/sheds")
+          img.home-category-image(
+            src="/assets/categories/shed.jpg",
+            alt="Quality Storage Sheds"
+          )
+          .home-category-overlay
+            h3.home-category-title Storage Sheds
+            p.home-category-description
+              | Custom storage solutions for every space and need
+
+        // Trailers
+        a.home-category-card(href="/trailers")
+          img.home-category-image(
+            src="/assets/categories/trailer.jpg",
+            alt="Utility Trailers"
+          )
+          .home-category-overlay
+            h3.home-category-title Utility Trailers
+            p.home-category-description
+              | Reliable trailers for work and transportation
+
+        // Metal Buildings
+        a.home-category-card(href="/metal-buildings")
+          img.home-category-image(
+            src="/assets/categories/metal.jpg",
+            alt="Metal Buildings"
+          )
+          .home-category-overlay
+            h3.home-category-title Metal Buildings
+            p.home-category-description
+              | Durable structures for commercial and residential use
+
+        // Play Sets
+        a.home-category-card(href="/play-sets")
+          img.home-category-image(
+            src="/assets/categories/playset.jpg",
+            alt="Children's Play Sets"
+          )
+          .home-category-overlay
+            h3.home-category-title Play Sets
+            p.home-category-description
+              | Create lasting memories with quality play equipment
+
+    // Features Section
+    section.home-features
+      h2.home-section-title Why Choose The Shed Place?
+      .home-features-grid
+        .home-feature-card
+          svg.home-feature-icon(
+            xmlns="http://www.w3.org/2000/svg",
+            fill="none",
+            viewBox="0 0 24 24",
+            stroke="currentColor"
+          )
+            path(
+              stroke-linecap="round",
+              stroke-linejoin="round",
+              stroke-width="2",
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            )
+          h3.home-feature-title Quality Guaranteed
+          p.home-feature-text Premium materials and expert craftsmanship in every product
+
+        .home-feature-card
+          svg.home-feature-icon(
+            xmlns="http://www.w3.org/2000/svg",
+            fill="none",
+            viewBox="0 0 24 24",
+            stroke="currentColor"
+          )
+            path(
+              stroke-linecap="round",
+              stroke-linejoin="round",
+              stroke-width="2",
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            )
+          h3.home-feature-title Competitive Pricing
+          p.home-feature-text Fair prices and flexible financing options available
+
+        .home-feature-card
+          svg.home-feature-icon(
+            xmlns="http://www.w3.org/2000/svg",
+            fill="none",
+            viewBox="0 0 24 24",
+            stroke="currentColor"
+          )
+            path(
+              stroke-linecap="round",
+              stroke-linejoin="round",
+              stroke-width="2",
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+            )
+          h3.home-feature-title Expert Service
+          p.home-feature-text Dedicated support from our experienced team
+
+    // Testimonials
+    section.home-testimonials
+      h2.home-section-title What Our Customers Say
+      .home-testimonials-grid
+        .home-testimonial-card
+          p.home-testimonial-text
+            | "The quality of our storage shed exceeded our expectations. Great service from start to finish!"
+          p.home-testimonial-author - Sarah M.
+
+        .home-testimonial-card
+          p.home-testimonial-text
+            | "Best prices in town for metal buildings, and the installation was quick and professional."
+          p.home-testimonial-author - John D.
+
+        .home-testimonial-card
+          p.home-testimonial-text
+            | "Our kids love their new play set. It's sturdy, safe, and looks great in our backyard."
+          p.home-testimonial-author - Michael R.
+
+    // Call to Action
+    section.home-cta-section
+      .home-cta-content
+        h2.home-cta-title Ready to Get Started?
+        p.home-cta-text
+          | Visit our showroom to see our quality structures in person or contact us to discuss your needs.
+        a.home-cta-button(href="/contact") Contact Us Today
