@@ -22,3 +22,60 @@
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */
+/* used in footer.pug */
+
+@utility layout-footer {
+  @apply bg-gray-900 text-gray-300 mt-auto;
+}
+
+@utility layout-footer-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+}
+
+@utility layout-footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8;
+}
+
+@utility layout-footer-section {
+  @apply space-y-4;
+}
+
+@utility layout-footer-heading {
+  @apply text-white text-lg font-semibold mb-4;
+}
+
+@utility layout-footer-text {
+  @apply text-sm leading-relaxed;
+}
+
+@utility layout-footer-address {
+  @apply text-sm mt-2;
+}
+
+@utility layout-footer-links {
+  @apply flex flex-col space-y-2;
+}
+
+@utility layout-footer-link {
+  @apply text-sm hover:text-white transition-colors duration-200;
+}
+
+@utility layout-footer-contact {
+  @apply text-sm space-y-1;
+}
+
+@utility layout-footer-hours {
+  @apply text-sm mt-4 space-y-1;
+}
+
+@utility layout-footer-bottom {
+  @apply border-t border-gray-800 pt-8;
+}
+
+@utility layout-footer-copyright {
+  @apply text-sm text-center text-gray-400;
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */

@@ -1,30 +1,30 @@
-footer
-  div
-    div
+footer.layout-footer
+  .layout-footer-container
+    .layout-footer-grid
       // Company Info Section
-      div
-        h3 About The Shed Place
-        p
+      .layout-footer-section
+        h3.layout-footer-heading About The Shed Place
+        p.layout-footer-text
           | Your trusted source for quality sheds, trailers,
           | metal buildings, and play sets in Hohenwald, TN.
-        p
+        p.layout-footer-address
           | 511 E Main Street
           br
           | Hohenwald, TN 38462
 
       // Products Section
-      div
-        h3 Our Products
-        div
-          a(href="/sheds") Sheds
-          a(href="/trailers") Trailers
-          a(href="/metal-buildings") Metal Buildings
-          a(href="/play-sets") Play Sets
+      .layout-footer-section
+        h3.layout-footer-heading Our Products
+        .layout-footer-links
+          a.layout-footer-link(href="/sheds") Sheds
+          a.layout-footer-link(href="/trailers") Trailers
+          a.layout-footer-link(href="/metal-buildings") Metal Buildings
+          a.layout-footer-link(href="/play-sets") Play Sets
 
       // Contact Section
-      div
-        h3 Contact & Hours
-        p
+      .layout-footer-section
+        h3.layout-footer-heading Contact & Hours
+        p.layout-footer-contact
           strong Contact:
           br
           | Trese Anderson
@@ -32,7 +32,7 @@ footer
           | (931) 324-1199
           br
           | shedplace@gmail.com
-        p
+        p.layout-footer-hours
           strong Hours:
           br
           | Monday - Friday: 9am - 6pm
@@ -42,17 +42,17 @@ footer
           | Sunday: Closed
 
       // Quick Links Section
-      div
-        h3 Quick Links
-        div
-          a(href="/") Home
-          a(href="/about") About Us
-          a(href="/contact") Contact
-          a(
+      .layout-footer-section
+        h3.layout-footer-heading Quick Links
+        .layout-footer-links
+          a.layout-footer-link(href="/") Home
+          a.layout-footer-link(href="/about") About Us
+          a.layout-footer-link(href="/contact") Contact
+          a.layout-footer-link(
             href="http://www.hohenwaldsheds.com",
             target="_blank",
             rel="noopener"
           ) Website
 
-    div
-      p &copy; #{ new Date().getFullYear() } The Shed Place. All rights reserved.
+    .layout-footer-bottom
+      p.layout-footer-copyright &copy; #{ new Date().getFullYear() } The Shed Place. All rights reserved.
