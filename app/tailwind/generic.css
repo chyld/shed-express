@@ -107,3 +107,126 @@
   @apply font-semibold text-green-800 block mb-1
          bg-green-100/50 px-1.5 py-0.5 rounded text-center;
 }
+
+/* About Page Layout */
+@utility about-container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 py-12;
+}
+
+@utility about-header {
+  @apply text-center mb-16;
+}
+
+@utility about-title {
+  @apply text-4xl md:text-5xl font-bold text-gray-900 mb-6;
+}
+
+@utility about-subtitle {
+  @apply text-xl text-gray-600 max-w-2xl mx-auto;
+}
+
+@utility about-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-12 mb-16;
+}
+
+@utility about-image {
+  @apply w-full h-full object-cover rounded-lg shadow-lg;
+}
+
+@utility about-content {
+  @apply space-y-6;
+}
+
+@utility about-section-title {
+  @apply text-2xl font-bold text-gray-900 mb-4;
+}
+
+@utility about-text {
+  @apply text-gray-600 leading-relaxed;
+}
+
+@utility about-values {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12;
+}
+
+@utility about-value-card {
+  @apply bg-white p-6 rounded-lg shadow-md border border-gray-100;
+}
+
+@utility about-value-title {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+@utility about-value-text {
+  @apply text-gray-600 text-sm;
+}
+
+@utility about-cta {
+  @apply text-center mt-12;
+}
+
+@utility about-button {
+  @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md 
+         text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200;
+}
+
+/* Contact Page Layout */
+@utility contact-container {
+  @apply max-w-5xl mx-auto px-4 sm:px-6 py-12;
+}
+
+@utility contact-header {
+  @apply text-center mb-16;
+}
+
+@utility contact-title {
+  @apply text-4xl md:text-5xl font-bold text-gray-900 mb-6;
+}
+
+@utility contact-subtitle {
+  @apply text-xl text-gray-600 max-w-2xl mx-auto;
+}
+
+@utility contact-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12;
+}
+
+@utility contact-info-section {
+  @apply bg-white rounded-xl shadow-lg p-8 border border-gray-100;
+}
+
+@utility contact-section-title {
+  @apply text-2xl font-bold text-gray-900 mb-6;
+}
+
+@utility contact-info-grid {
+  @apply space-y-8;
+}
+
+@utility contact-info-item {
+  @apply flex items-start space-x-4;
+}
+
+@utility contact-info-icon {
+  @apply w-6 h-6 text-blue-600 mt-1;
+}
+
+@utility contact-info-content {
+  @apply space-y-2;
+}
+
+@utility contact-info-label {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+@utility contact-info-text {
+  @apply text-gray-600;
+}
+
+@utility contact-hours-grid {
+  @apply grid grid-cols-2 gap-2 text-sm;
+}
+
+@utility contact-map {
+  @apply w-full h-[400px] rounded-xl shadow-lg border-2 border-gray-200;
+}

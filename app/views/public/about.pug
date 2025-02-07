@@ -4,4 +4,59 @@ block head
   link(rel="stylesheet", href="/css/generic.css")
 
 block content
-  h1.lol about
+  .about-container
+    header.about-header
+      h1.about-title The Shed Place Story
+      p.about-subtitle Serving Hohenwald and surrounding communities with quality outdoor structures since 1995
+
+    .about-grid
+      .about-image-container
+        img.about-image(
+          src="/assets/logos/light.svg",
+          alt="The Shed Place storefront"
+        )
+      .about-content
+        h2.about-section-title Our Journey
+        p.about-text
+          | For over 25 years, The Shed Place has been a cornerstone of the Hohenwald
+          | community, providing high-quality sheds, trailers, metal buildings, and play
+          | sets to families across Tennessee. What started as a small family business
+          | has grown into a trusted name in outdoor structures, while maintaining our
+          | commitment to personal service and quality craftsmanship.
+
+        p.about-text
+          | Under the leadership of Trese Anderson, we've expanded our offerings while
+          | staying true to our core values of quality, integrity, and customer satisfaction.
+          | We believe in providing not just products, but solutions that enhance our
+          | customers' lives and properties.
+
+    .about-values
+      .about-value-card
+        h3.about-value-title Quality First
+        p.about-value-text
+          | We partner with top manufacturers and carefully select each product
+          | to ensure lasting value for our customers.
+
+      .about-value-card
+        h3.about-value-title Customer Focus
+        p.about-value-text
+          | Our team takes the time to understand your needs and help you find
+          | the perfect solution for your space and budget.
+
+      .about-value-card
+        h3.about-value-title Local Expertise
+        p.about-value-text
+          | As members of the Hohenwald community, we understand local needs
+          | and provide products suited to our region's conditions.
+
+      .about-value-card
+        h3.about-value-title Fair Pricing
+        p.about-value-text
+          | We believe in transparent, competitive pricing and offering the
+          | best value for your investment.
+
+    .about-cta
+      p.about-text.mb-6
+        | Visit our showroom to see our quality structures in person and speak
+        | with our knowledgeable team about your needs.
+      a.about-button(href="/contact") Contact Us Today
