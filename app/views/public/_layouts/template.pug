@@ -1,12 +1,14 @@
-html
+html.layout-master-html(lang="en")
   head
     title The Shed Place
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/template.css")
     block head
-  body
-    include ../_partials/nav
-    main
+  body.layout-master-body
+    nav
+      include ../_partials/nav
+    main.layout-master-main
       block content
-    include ../_partials/footer
+    footer
+      include ../_partials/footer
