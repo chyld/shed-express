@@ -1,50 +1,23 @@
-nav.public-nav
-  .public-nav-container
-    .public-nav-content
+nav
+  div
+    div
       // Logo/Brand section
-      .public-nav-brand-container
-        a.public-nav-brand(href="/") The Shed Place
+      div
+        a(href="/") The Shed Place
 
       // Hamburger Menu Button (Mobile)
-      button.public-nav-hamburger(
-        type="button",
-        aria-label="Toggle menu",
-        data-nav-toggle
-      )
-        span.public-nav-hamburger-line
-        span.public-nav-hamburger-line
-        span.public-nav-hamburger-line
+      button(type="button", aria-label="Toggle menu", data-nav-toggle)
+        span
+        span
+        span
 
       // Navigation Links (Mobile Menu)
-      .public-nav-links(data-nav-links)
-        .public-nav-mobile-links
-          a.public-nav-link(href="/") Home
-          a.public-nav-link(href="/sheds") Sheds
-          a.public-nav-link(href="/trailers") Trailers
-          a.public-nav-link(href="/metal-buildings") Metal Buildings
-          a.public-nav-link(href="/play-sets") Play Sets
-          a.public-nav-link(href="/contact") Contact
-          a.public-nav-link(href="/about") About
-
-script.
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector("[data-nav-toggle]");
-    const links = document.querySelector("[data-nav-links]");
-    const body = document.body;
-
-    toggle.addEventListener("click", () => {
-      toggle.classList.toggle("public-nav-hamburger-active");
-      links.classList.toggle("public-nav-links-active");
-      body.classList.toggle("public-body-no-scroll");
-    });
-
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll(".public-nav-link");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        toggle.classList.remove("public-nav-hamburger-active");
-        links.classList.remove("public-nav-links-active");
-        body.classList.remove("public-body-no-scroll");
-      });
-    });
-  });
+      div(data-nav-links)
+        div
+          a(href="/") Home
+          a(href="/sheds") Sheds
+          a(href="/trailers") Trailers
+          a(href="/metal-buildings") Metal Buildings
+          a(href="/play-sets") Play Sets
+          a(href="/contact") Contact
+          a(href="/about") About

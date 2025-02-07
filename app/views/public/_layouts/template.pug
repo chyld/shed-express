@@ -1,11 +1,12 @@
-html.public-html
+html
   head
+    title The Shed Place
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title The Shed Place
+    link(rel="stylesheet", href="/css/template.css")
     block head
-  body.public-body
+  body
     include ../_partials/nav
-    main.public-main
+    main
       block content
     include ../_partials/footer
