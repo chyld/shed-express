@@ -1,0 +1,83 @@
+extends _layouts/template
+
+block head
+  link(rel="stylesheet", href="/css/shed-trailer.css")
+
+block content
+  - const formatPrice = (cents) => (cents / 100).toLocaleString("en-US", { style: "currency", currency: "USD" });
+  - const total = shed.basePrice + shed.optionsPrice;
+  - const finalPrice = total * (1 - shed.salePercent / 100);
+  - const priceItems = [["Base Price", formatPrice(shed.basePrice)], ["Options Price", formatPrice(shed.optionsPrice)], ["Subtotal", formatPrice(total)]]
+
+  article.std-container
+    header.std-header
+      h1.std-title= shed.title
+      p.std-description= shed.description
+      p.std-dimensions #{ shed.sizeWidth }' × #{ shed.sizeLength }'
+
+    if shed.media && shed.media.length
+      section.std-media-section
+        .std-media-grid
+          each item in shed.media
+            if item.isPhoto
+              button.std-media-button(onclick=`openModal("${item.path}")`)
+                img.std-media-item(src=item.path, alt=shed.title)
+            else
+              video.std-media-item(controls): source(src=item.path)
+    else
+      p.std-empty No media available
+
+    section.std-details
+      dl.std-list
+        each item in priceItems
+          dt.std-label= item[0]
+          dd.std-price= item[1]
+
+        if shed.salePercent
+          dt.std-label-highlight Sale Discount
+          dd.std-discount
+            .std-discount-header
+              span.std-discount-tag -#{ shed.salePercent }% OFF
+              span.std-original-price Was #{ formatPrice(total) }
+            .std-savings
+              span.std-savings-text You Save
+              span.std-savings-amount #{ formatPrice(total - finalPrice) }
+
+          dt.std-label-highlight Final Price
+          dd.std-final-price #{ formatPrice(finalPrice) }
+        else
+          dt.std-label Final Price
+          dd.std-final-price #{ formatPrice(total) }
+
+        dt.std-label Type
+        dd.std-value= shed.shedType
+
+        if shed.colorRoof || shed.colorSiding || shed.colorTrim
+          dt.std-label Colors
+          dd.std-colors
+            each color, type in { Roof: shed.colorRoof, Siding: shed.colorSiding, Trim: shed.colorTrim }
+              if color
+                p.std-color #{ type }: #{ color }
+
+  #mediaModal.std-modal
+    .std-modal-overlay(onclick="closeModal()")
+    .std-modal-container
+      button.std-modal-close(onclick="closeModal()") ×
+      img#modalImage.std-modal-image
+
+  script.
+    const modal = document.getElementById("mediaModal");
+    const modalImg = document.getElementById("modalImage");
+
+    function openModal(path) {
+      modalImg.src = path;
+      modal.classList.add("std-modal-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("std-modal-open");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());

@@ -1,0 +1,75 @@
+extends _layouts/template
+
+block head
+  link(rel="stylesheet", href="/css/shed-trailer.css")
+
+block content
+  - const formatPrice = (cents) => (cents / 100).toLocaleString("en-US", { style: "currency", currency: "USD" });
+  - const finalPrice = trailer.price * (1 - trailer.salePercent / 100);
+  - const priceItems = [["List Price", formatPrice(trailer.price)]];
+
+  article.std-container
+    header.std-header
+      h1.std-title= trailer.title
+      p.std-description= trailer.description
+      p.std-dimensions #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
+
+    if trailer.media && trailer.media.length
+      section.std-media-section
+        .std-media-grid
+          each item in trailer.media
+            if item.isPhoto
+              button.std-media-button(onclick=`openModal("${item.path}")`)
+                img.std-media-item(src=item.path, alt=trailer.title)
+            else
+              video.std-media-item(controls): source(src=item.path)
+    else
+      p.std-empty No media available
+
+    section.std-details
+      dl.std-list
+        each item in priceItems
+          dt.std-label= item[0]
+          dd.std-price= item[1]
+
+        if trailer.salePercent
+          dt.std-label-highlight Sale Discount
+          dd.std-discount
+            .std-discount-header
+              span.std-discount-tag -#{ trailer.salePercent }% OFF
+              span.std-original-price Was #{ formatPrice(trailer.price) }
+            .std-savings
+              span.std-savings-text You Save
+              span.std-savings-amount #{ formatPrice(trailer.price - finalPrice) }
+
+          dt.std-label-highlight Final Price
+          dd.std-final-price #{ formatPrice(finalPrice) }
+        else
+          dt.std-label Final Price
+          dd.std-final-price #{ formatPrice(trailer.price) }
+
+        dt.std-label Type
+        dd.std-value= trailer.trailerType
+
+  #mediaModal.std-modal
+    .std-modal-overlay(onclick="closeModal()")
+    .std-modal-container
+      button.std-modal-close(onclick="closeModal()") ×
+      img#modalImage.std-modal-image
+
+  script.
+    const modal = document.getElementById("mediaModal");
+    const modalImg = document.getElementById("modalImage");
+
+    function openModal(path) {
+      modalImg.src = path;
+      modal.classList.add("std-modal-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("std-modal-open");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());

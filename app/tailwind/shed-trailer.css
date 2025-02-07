@@ -85,3 +85,126 @@
 @utility stl-title-link {
   @apply text-current underline underline-offset-2;
 }
+
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* Shed Trailer Detail */
+/* These are the styles for the shed and trailer detail pages */
+
+/* Base Layout */
+@utility std-container {
+  @apply max-w-4xl mx-auto p-4 sm:p-8 space-y-6 sm:space-y-8;
+}
+
+@utility std-header {
+  @apply space-y-3 text-center md:text-left;
+}
+
+@utility std-title {
+  @apply text-3xl md:text-4xl font-bold;
+}
+
+@utility std-description {
+  @apply text-lg text-gray-600;
+}
+
+@utility std-dimensions {
+  @apply text-xl font-medium text-gray-700;
+}
+
+/* Media Section */
+@utility std-media-section {
+  @apply bg-white rounded-xl shadow-sm border border-gray-200;
+}
+
+@utility std-media-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-xl;
+}
+
+@utility std-media-button {
+  @apply p-0 border-0 bg-transparent cursor-zoom-in w-full;
+}
+
+@utility std-media-item {
+  @apply w-full aspect-[4/3] object-cover rounded-lg shadow-sm
+         ring-1 ring-gray-200 ring-offset-2 hover:ring-blue-400
+         transition duration-200;
+}
+
+/* Details Section */
+@utility std-details {
+  @apply bg-white rounded-lg p-6 shadow-sm border border-gray-200;
+}
+
+@utility std-list {
+  @apply grid md:grid-cols-2 gap-4 md:gap-6;
+}
+
+@utility std-label {
+  @apply text-sm font-medium text-gray-600;
+}
+
+@utility std-label-highlight {
+  @apply text-sm font-bold uppercase tracking-wide;
+}
+
+/* Pricing */
+@utility std-price {
+  @apply text-lg font-medium;
+}
+
+@utility std-discount {
+  @apply flex flex-col gap-2 bg-red-50 p-3 rounded-lg border border-red-100;
+}
+
+@utility std-discount-header {
+  @apply flex items-center gap-3;
+}
+
+@utility std-discount-tag {
+  @apply px-3 py-1 rounded-full text-sm font-bold bg-red-600 text-white;
+}
+
+@utility std-savings {
+  @apply flex items-baseline gap-2 text-red-700;
+}
+
+@utility std-savings-text {
+  @apply text-sm font-medium;
+}
+
+@utility std-savings-amount {
+  @apply text-lg font-bold;
+}
+
+@utility std-final-price {
+  @apply text-2xl font-bold text-emerald-600;
+}
+
+/* Modal */
+@utility std-modal {
+  @apply fixed inset-0 z-50 invisible opacity-0 transition-all duration-300;
+}
+
+@utility std-modal-open {
+  @apply visible opacity-100;
+}
+
+@utility std-modal-overlay {
+  @apply absolute inset-0 bg-black/75 backdrop-blur-sm;
+}
+
+@utility std-modal-container {
+  @apply fixed inset-4 md:inset-8 flex items-center justify-center;
+}
+
+@utility std-modal-image {
+  @apply max-w-full max-h-full object-contain rounded-lg shadow-2xl;
+}
+
+@utility std-modal-close {
+  @apply absolute top-2 right-2 w-10 h-10 flex items-center justify-center
+         text-3xl font-bold text-white bg-black/50 hover:bg-black/75 
+         rounded-full transition-colors cursor-pointer;
+}
