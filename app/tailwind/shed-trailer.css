@@ -81,3 +81,7 @@
 @utility stl-empty {
   @apply text-center py-12 text-gray-500 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300;
 }
+
+@utility stl-title-link {
+  @apply text-current underline underline-offset-2;
+}
