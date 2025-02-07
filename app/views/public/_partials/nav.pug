@@ -1,7 +1,64 @@
-a(href="/") Home
-a(href="/sheds") Sheds
-a(href="/trailers") Trailers
-a(href="/metal-buildings") Metal Buildings
-a(href="/play-sets") Play Sets
-a(href="/contact") Contact
-a(href="/about") About
+-
+  const links = [
+    ['Sheds', '/sheds'],
+    ['Trailers', '/trailers'],
+    ['Metal Buildings', '/metal-buildings'],
+    ['Play Sets', '/play-sets'],
+    ['Contact', '/contact'],
+    ['About', '/about']
+  ]
+
+nav.layout-nav
+  .layout-nav-container
+    // Logo/Brand
+    a.layout-nav-brand(href="/") The Shed Place
+
+    // Mobile Menu Button
+    button.layout-nav-mobile-button(
+      type="button",
+      aria-controls="mobile-menu",
+      aria-expanded="false"
+    ): span.layout-nav-mobile-icon
+      - for (let i = 0; i < 3; i++)
+        span.layout-nav-mobile-bar
+
+    // Desktop Navigation
+    .layout-nav-desktop
+      each link in links
+        a.layout-nav-link(href=link[1])= link[0]
+
+    // Mobile Menu (Hidden by default)
+    #mobile-menu.layout-nav-mobile
+      .layout-nav-mobile-container
+        .layout-nav-mobile-header
+          h2.layout-nav-mobile-title Menu
+          button.layout-nav-mobile-close(
+            type="button",
+            aria-label="Close menu"
+          ) &times;
+        .layout-nav-mobile-links
+          each link in links
+            a.layout-nav-mobile-link(href=link[1])= link[0]
+
+script.
+  (() => {
+    const d = document;
+    const btn = d.querySelector(".layout-nav-mobile-button");
+    const menu = d.querySelector(".layout-nav-mobile");
+    const icon = d.querySelector(".layout-nav-mobile-icon");
+    const close = d.querySelector(".layout-nav-mobile-close");
+    let open = false;
+
+    const toggle = () => {
+      open = !open;
+      menu.classList.toggle("layout-nav-mobile-open");
+      icon.classList.toggle("layout-nav-mobile-icon-open");
+      btn.setAttribute("aria-expanded", open);
+    };
+
+    [btn, close].forEach((el) => el.addEventListener("click", toggle));
+
+    d.addEventListener("click", (e) => open && !e.target.closest(".layout-nav") && toggle());
+
+    d.addEventListener("keydown", (e) => open && e.key === "Escape" && toggle());
+  })();

@@ -79,3 +79,102 @@
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */
+/* used in nav.pug */
+
+/* Navigation */
+@utility layout-nav {
+  @apply bg-gray-900 shadow-lg sticky top-0 z-50;
+}
+
+@utility layout-nav-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative flex items-center justify-between h-16;
+}
+
+@utility layout-nav-brand {
+  @apply text-xl font-bold text-white hover:text-gray-200 transition-colors duration-200;
+}
+
+/* Desktop Navigation */
+@utility layout-nav-desktop {
+  @apply hidden md:flex md:items-center md:space-x-8;
+}
+
+@utility layout-nav-link {
+  @apply text-gray-200 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 relative;
+
+  &::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out;
+  }
+
+  &:hover::after {
+    @apply w-full;
+  }
+}
+
+/* Mobile Menu */
+@utility layout-nav-mobile {
+  @apply md:hidden fixed inset-0 transform translate-x-full transition-transform duration-300 ease-in-out;
+  background-color: rgba(17, 24, 39, 0.5);
+}
+
+@utility layout-nav-mobile-open {
+  @apply translate-x-0;
+}
+
+@utility layout-nav-mobile-container {
+  @apply fixed inset-y-0 right-0 w-64 bg-gray-900 shadow-xl flex flex-col py-6 px-4 space-y-1;
+}
+
+@utility layout-nav-mobile-link {
+  @apply block px-4 py-2 text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700 rounded-md;
+}
+
+/* Mobile Button */
+@utility layout-nav-mobile-button {
+  @apply md:hidden p-2 rounded-md text-gray-200 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-400;
+}
+
+@utility layout-nav-mobile-bar {
+  @apply w-full h-0.5 bg-gray-200 rounded-full transform transition-all duration-300;
+}
+
+/* Mobile Menu Header */
+@utility layout-nav-mobile-header {
+  @apply flex items-center justify-between px-4 py-4 border-b border-gray-700;
+}
+
+@utility layout-nav-mobile-title {
+  @apply text-lg font-medium text-white;
+}
+
+@utility layout-nav-mobile-close {
+  @apply p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-400;
+}
+
+/* Mobile Icon Animation */
+@utility layout-nav-mobile-icon {
+  @apply relative w-6 h-6 flex flex-col justify-between;
+}
+
+@utility layout-nav-mobile-icon-open {
+  & span:first-child {
+    @apply transform rotate-45 translate-y-2.5;
+  }
+
+  & span:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  & span:last-child {
+    @apply transform -rotate-45 -translate-y-2.5;
+  }
+}
+
+@utility layout-nav-mobile-links {
+  @apply px-2 py-4 space-y-1;
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
