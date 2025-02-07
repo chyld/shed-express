@@ -4,4 +4,150 @@ block head
   link(rel="stylesheet", href="/css/generic.css")
 
 block content
-  h1.lol play sets
+  .play-container
+    h1.play-title Play Sets
+
+    .play-intro
+      .play-intro-grid
+        .play-intro-item
+          span.play-intro-highlight Safety First
+          | Built with premium materials and secure hardware
+        .play-intro-item
+          span.play-intro-highlight Durable
+          | Weather-resistant treated lumber construction
+        .play-intro-item
+          span.play-intro-highlight Educational
+          | Promotes physical activity and motor skills
+        .play-intro-item
+          span.play-intro-highlight Customizable
+          | Mix and match components for perfect setup
+        .play-intro-item
+          span.play-intro-highlight Family Fun
+          | Creates lasting memories in your backyard
+        .play-intro-item
+          span.play-intro-highlight Value
+          | Years of entertainment for the whole family
+
+    .play-grid
+      -
+        const imageData = [
+          {
+            file: '2x4-pressure-treated-wood.jpeg',
+            desc: 'High-quality pressure treated lumber for long-lasting durability'
+          },
+          {
+            file: '3-position-beam.jpg',
+            desc: 'Sturdy beam supporting multiple swing positions'
+          },
+          {
+            file: '4-position-beam.jpg',
+            desc: 'Extended beam design for additional swing capacity'
+          },
+          {
+            file: 'backyard-structures-logo.jpg',
+            desc: 'Our trusted play set manufacturer partner'
+          },
+          {
+            file: 'belt-swing.jpg',
+            desc: 'Classic belt swing for hours of enjoyment'
+          },
+          {
+            file: 'buoy-ball.jpg',
+            desc: 'Fun buoy ball swing for climbing and swinging'
+          },
+          {
+            file: 'classic-cabin-tower.jpg',
+            desc: 'Traditional cabin design with multiple play features'
+          },
+          {
+            file: 'ez-climb-stairs.jpg',
+            desc: 'Safe and easy-to-climb stairs for younger children'
+          },
+          {
+            file: 'ez-rider.jpg',
+            desc: 'Exciting glider swing for dynamic play'
+          },
+          {
+            file: 'fireman-pole.jpg',
+            desc: 'Classic fireman pole for quick descents'
+          },
+          {
+            file: 'gang-plank.jpg',
+            desc: 'Adventurous walking plank with safety rails'
+          },
+          {
+            file: 'ladder.jpg',
+            desc: 'Sturdy ladder for safe climbing access'
+          },
+          {
+            file: 'lag-bolts.jpg',
+            desc: 'Heavy-duty hardware for secure assembly'
+          },
+          {
+            file: 'lookout-tower.jpg',
+            desc: 'Elevated tower with panoramic views'
+          },
+          {
+            file: 'metal-roof.jpg',
+            desc: 'Durable metal roofing for weather protection'
+          },
+          {
+            file: 'monkey-bars.jpg',
+            desc: 'Classic monkey bars for upper body strength'
+          },
+          {
+            file: 'play-station-tower.jpg',
+            desc: 'Multi-level play station with various activities'
+          },
+          {
+            file: 'rock-wall.jpg',
+            desc: 'Challenging rock wall for climbing adventures'
+          },
+          {
+            file: 'split-shot-tower.jpg',
+            desc: 'Unique split-level tower design'
+          },
+          {
+            file: 'super-cabin-tower.jpg',
+            desc: 'Deluxe cabin tower with extended features'
+          },
+          {
+            file: 'toddler-swing.jpg',
+            desc: 'Safe and secure swing for younger children'
+          },
+          {
+            file: 'trapeze.jpg',
+            desc: 'Gymnastic-style trapeze bar for advanced play'
+          },
+          {
+            file: 'turbo-slide.jpg',
+            desc: 'Fast and exciting turbo slide'
+          },
+          {
+            file: 'wave-slide.jpg',
+            desc: 'Fun wave-style slide for gentle descents'
+          },
+          {
+            file: 'wood-screws.jpeg',
+            desc: 'Quality fasteners for secure construction'
+          }
+        ]
+
+        // Helper function to format the title
+        const formatTitle = (filename) => {
+          return filename
+            .split('.')[0]
+            .split('-')
+            .join(' ')
+            .replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+      each item in imageData
+        .play-image-wrapper
+          img.play-image(
+            src=`/assets/play-sets/${item.file}`,
+            alt=formatTitle(item.file)
+          )
+          .play-description-container
+            .play-description-title= formatTitle(item.file)
+            .play-description-text= item.desc
