@@ -6,7 +6,86 @@ block head
 block content
   main.stl-container
     header.stl-header
-      h1.stl-title Available Trailers (#{ trailers ? trailers.length : 0 })
+      h1.stl-title Quality Built Trailers
+
+    .stl-trailer-intro
+      .stl-trailer-intro-grid
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Heavy Duty
+          | Professional-grade construction for lasting durability
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Versatile
+          | Multiple configurations for any hauling need
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Safety First
+          | Built with premium braking and lighting systems
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Easy Loading
+          | Engineered for convenient access and secure transport
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Customizable
+          | Various sizes and options available
+        .stl-trailer-intro-item
+          span.stl-trailer-intro-highlight Reliable
+          | Trusted components from industry leaders
+
+    .stl-trailer-feature-grid
+      -
+        const imageData = [
+          {
+            file: '15-trailer-tires.jpg',
+            desc: 'Heavy-duty 15-inch trailer tires for maximum load capacity'
+          },
+          {
+            file: '7x20-equipment-no-background.jpg',
+            desc: 'Professional equipment trailer with versatile loading options'
+          },
+          {
+            file: 'double-axle.jpg',
+            desc: 'Dual axle system for enhanced stability and weight distribution'
+          },
+          {
+            file: 'electric-trailer-brakes.jpg',
+            desc: 'Electric brake system for reliable stopping power'
+          },
+          {
+            file: 'hitches-stacked.jpg',
+            desc: 'Various hitch options for different towing needs'
+          },
+          {
+            file: 'ramp-build.jpg',
+            desc: 'Heavy-duty ramp construction for easy loading'
+          },
+          {
+            file: 'single-axle.jpg',
+            desc: 'Single axle design for lighter duty applications'
+          },
+          {
+            file: 'trailer-jack.jpg',
+            desc: 'Heavy-duty jack for stable parking and hitching'
+          }
+        ]
+
+        // Helper function to format the title
+        const formatTitle = (filename) => {
+          return filename
+            .split('.')[0]
+            .split('-')
+            .join(' ')
+            .replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+      each item in imageData
+        .stl-trailer-feature-wrapper
+          img.stl-feature-image(
+            src=`/assets/trailers/${item.file}`,
+            alt=formatTitle(item.file)
+          )
+          .stl-trailer-feature-container
+            .stl-trailer-feature-title= formatTitle(item.file)
+            .stl-trailer-feature-text= item.desc
+
+    h2.stl-title.mt-12 Available Trailers (#{ trailers ? trailers.length : 0 })
 
     if trailers && trailers.length
       section.stl-grid(role="grid")

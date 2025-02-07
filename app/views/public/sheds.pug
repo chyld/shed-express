@@ -6,7 +6,86 @@ block head
 block content
   main.stl-container
     header.stl-header
-      h1.stl-title Available Sheds (#{ sheds ? sheds.length : 0 })
+      h1.stl-title Quality Built Sheds
+
+    .stl-intro
+      .stl-intro-grid
+        .stl-intro-item
+          span.stl-intro-highlight Built to Last
+          | Premium materials and expert craftsmanship
+        .stl-intro-item
+          span.stl-intro-highlight Customizable
+          | Multiple styles, sizes, and options available
+        .stl-intro-item
+          span.stl-intro-highlight Weather-Resistant
+          | Designed to withstand harsh conditions
+        .stl-intro-item
+          span.stl-intro-highlight Easy Access
+          | Wide doors and reinforced thresholds
+        .stl-intro-item
+          span.stl-intro-highlight Storage Solution
+          | Maximize your space with organized storage
+        .stl-intro-item
+          span.stl-intro-highlight Value
+          | Long-term investment in your property
+
+    .stl-feature-grid
+      -
+        const imageData = [
+          {
+            file: '4x6-skids.png',
+            desc: 'Heavy-duty 4x6 pressure-treated skids for solid foundation'
+          },
+          {
+            file: 'color-match-screws.png',
+            desc: 'Color-matched screws for seamless appearance'
+          },
+          {
+            file: 'diamond-plate-threshold.png',
+            desc: 'Durable diamond plate threshold for easy access'
+          },
+          {
+            file: 'double-stud.png',
+            desc: 'Double-stud construction for superior strength'
+          },
+          {
+            file: 'double-top-plate.png',
+            desc: 'Double top plate for enhanced structural integrity'
+          },
+          {
+            file: 'metal-shingle-roof.png',
+            desc: 'Premium metal or shingle roofing options'
+          },
+          {
+            file: 'nails.png',
+            desc: 'Quality fasteners for secure assembly'
+          },
+          {
+            file: 'shed-with-flowers.jpg',
+            desc: 'Beautiful integration with your landscape'
+          }
+        ]
+
+        // Helper function to format the title
+        const formatTitle = (filename) => {
+          return filename
+            .split('.')[0]
+            .split('-')
+            .join(' ')
+            .replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+      each item in imageData
+        .stl-feature-wrapper
+          img.stl-feature-image(
+            src=`/assets/sheds/${item.file}`,
+            alt=formatTitle(item.file)
+          )
+          .stl-feature-container
+            .stl-feature-title= formatTitle(item.file)
+            .stl-feature-text= item.desc
+
+    h2.stl-title.mt-12 Available Sheds (#{ sheds ? sheds.length : 0 })
 
     if sheds && sheds.length
       section.stl-grid(role="grid")

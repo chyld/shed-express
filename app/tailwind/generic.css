@@ -2,11 +2,15 @@
 
 /* Metal Buildings Page Layout */
 @utility metal-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+@utility metal-header {
+  @apply mb-8 text-center;
 }
 
 @utility metal-title {
-  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center;
+  @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center;
 }
 
 @utility metal-grid {
@@ -56,11 +60,15 @@
 
 /* Play Sets Page Layout */
 @utility play-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+@utility play-header {
+  @apply mb-8 text-center;
 }
 
 @utility play-title {
-  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center;
+  @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center;
 }
 
 @utility play-grid {
