@@ -4,4 +4,42 @@ block head
   link(rel="stylesheet", href="/css/shed-trailer.css")
 
 block content
-  h1 trailers
+  main.stl-container
+    header.stl-header
+      h1.stl-title Available Trailers (#{ trailers ? trailers.length : 0 })
+
+    if trailers && trailers.length
+      section.stl-grid(role="grid")
+        each trailer in trailers
+          article.stl-item(role="gridcell")
+            .stl-media
+              if trailer.media && trailer.media[0]
+                if trailer.media[0].isPhoto
+                  img.stl-img(
+                    src=trailer.media[0].path,
+                    alt=trailer.title,
+                    loading="lazy"
+                  )
+                else
+                  video.stl-vid(
+                    src=trailer.media[0].path,
+                    controls,
+                    muted,
+                    preload="metadata"
+                  )
+              else
+                .stl-no-media
+                  span Photo not available
+
+            .stl-details
+              h2.stl-name= trailer.title
+              p.stl-size #{ trailer.sizeWidth }' × #{ trailer.sizeLength }'
+              if trailer.salePercent
+                .stl-prices
+                  p.stl-old $#{ (trailer.price / 100).toFixed(2) }
+                  p.stl-tag #{ trailer.salePercent }% off
+                  p.stl-new $#{ (trailer.price * (1 - trailer.salePercent/100) / 100).toFixed(2) }
+              else
+                p.stl-price $#{ (trailer.price / 100).toFixed(2) }
+    else
+      p.stl-empty No trailers currently available.

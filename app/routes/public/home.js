@@ -37,8 +37,33 @@ router.get("/sheds", async (req, res) => {
   }
 });
 
-router.get("/trailers", (req, res) => {
-  res.render("public/trailers");
+router.get("/trailers", async (req, res) => {
+  try {
+    const trailers = await prisma.trailer.findMany({
+      where: {
+        isDeleted: false,
+        isSold: false,
+      },
+      include: {
+        media: {
+          where: {
+            isPrimary: true,
+            isDeleted: false,
+          },
+        },
+      },
+      orderBy: [
+        { sizeWidth: "asc" },
+        { sizeLength: "asc" },
+        { createdAt: "desc" },
+      ],
+    });
+
+    res.render("public/trailers", { trailers });
+  } catch (error) {
+    console.error("Error fetching trailers:", error);
+    res.status(500).send("Error loading trailers");
+  }
 });
 
 router.get("/metal-buildings", (req, res) => {
