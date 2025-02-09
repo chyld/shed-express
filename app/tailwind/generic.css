@@ -507,3 +507,34 @@
     @apply text-red-600;
   }
 }
+
+/* 3D Builder Section */
+@utility metal-builder-section {
+  @apply my-16 px-4;
+}
+
+@utility metal-builder-container {
+  @apply max-w-2xl mx-auto text-center p-8 
+         bg-gradient-to-br from-blue-50 to-slate-50
+         rounded-xl shadow-lg border border-blue-100;
+}
+
+@utility metal-builder-title {
+  @apply text-2xl font-bold text-gray-900 mb-3;
+}
+
+@utility metal-builder-description {
+  @apply text-gray-600 mb-6;
+}
+
+@utility metal-builder-button {
+  @apply inline-flex px-6 py-3 text-lg font-semibold text-white
+         bg-blue-600 hover:bg-blue-700 
+         rounded-lg shadow-md hover:shadow-lg
+         transform hover:-translate-y-0.5
+         transition-all duration-200;
+}
+
+@utility metal-builder-note {
+  @apply mt-4 text-sm text-gray-500;
+}

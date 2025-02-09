@@ -331,3 +331,34 @@
 @utility stl-mt-12 {
   @apply mt-12;
 }
+
+/* 3D Builder Section */
+@utility stl-builder-section {
+  @apply my-16 px-4;
+}
+
+@utility stl-builder-container {
+  @apply max-w-2xl mx-auto text-center p-8 
+         bg-gradient-to-br from-amber-50 to-orange-50
+         rounded-xl shadow-lg border border-amber-100;
+}
+
+@utility stl-builder-title {
+  @apply text-2xl font-bold text-gray-900 mb-3;
+}
+
+@utility stl-builder-description {
+  @apply text-gray-600 mb-6;
+}
+
+@utility stl-builder-button {
+  @apply inline-flex px-6 py-3 text-lg font-semibold text-white
+         bg-amber-600 hover:bg-amber-700 
+         rounded-lg shadow-md hover:shadow-lg
+         transform hover:-translate-y-0.5
+         transition-all duration-200;
+}
+
+@utility stl-builder-note {
+  @apply mt-4 text-sm text-gray-500;
+}
