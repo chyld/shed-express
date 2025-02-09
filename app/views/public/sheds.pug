@@ -7,63 +7,45 @@ block content
   main.stl-container
     header.stl-header
       h1.stl-title Quality Built Sheds
+      p.stl-description Discover the difference with our exceptional sheds, designed to meet or exceed industry standards for lasting durability. We take immense pride in our craftsmanship and stand behind our work with a robust 5-year limited warranty. Experience quality and peace of mind with every structure we build.
 
-    .stl-intro
-      .stl-intro-grid
-        .stl-intro-item
-          span.stl-intro-highlight Built to Last
-          | Premium materials and expert craftsmanship
-        .stl-intro-item
-          span.stl-intro-highlight Customizable
-          | Multiple styles, sizes, and options available
-        .stl-intro-item
-          span.stl-intro-highlight Weather-Resistant
-          | Designed to withstand harsh conditions
-        .stl-intro-item
-          span.stl-intro-highlight Easy Access
-          | Wide doors and reinforced thresholds
-        .stl-intro-item
-          span.stl-intro-highlight Storage Solution
-          | Maximize your space with organized storage
-        .stl-intro-item
-          span.stl-intro-highlight Value
-          | Long-term investment in your property
+    .stl-hero
+      img.stl-hero-image(
+        src="/assets/sheds/shed-with-flowers.jpg",
+        alt="Beautiful shed integrated with landscape and flowers"
+      )
 
     .stl-feature-grid
       -
         const imageData = [
           {
             file: '4x6-skids.png',
-            desc: 'Heavy-duty 4x6 pressure-treated skids for solid foundation'
+            desc: `Our 4×6" pressure treated skids resist rotting and are notched at 12" or 16" on center to ensure consistent floor joist spacing. Recessing and toenailing the joists in the notches locks them in place ensures the shed can be loaded, unloaded, and moved repeatedly without any warping or racking of the floor system.`
           },
           {
             file: 'color-match-screws.png',
-            desc: 'Color-matched screws for seamless appearance'
+            desc: `Our metal roofing panels are fastened with color matching screws to ensure the best possible appearance. Our fasteners are designed with an enhanced corrosion resistant coating and use a self-sealing neoprene washer to prevent leaks.`
           },
           {
             file: 'diamond-plate-threshold.png',
-            desc: 'Durable diamond plate threshold for easy access'
+            desc: `The diamond-plate door threshold cap creates a solid step that can handle constant abuse from foot traffic and equipment wheels. It prevents wear the tear on the exposed edges of the floor decking at the entrance of the shed…ensuring years of use without cracking, splintering, or delaminating.`
           },
           {
             file: 'double-stud.png',
-            desc: 'Double-stud construction for superior strength'
+            desc: `We double the wall studs wherever our T1 – 11 siding has a seam, so that both sections of siding will have a full stud width to be fastened to. This prevents edge tear-outs on the siding and strong adhesion that will stand up to strong winds and years of use.`
           },
           {
             file: 'double-top-plate.png',
-            desc: 'Double top plate for enhanced structural integrity'
+            desc: `We use double top plates to help intersecting walls lock together and to help support the load from roof trusses. This is especially important to prevent sagging when roof truss and wall stud spacing differ and the truss lines up between two studs.`
           },
           {
             file: 'metal-shingle-roof.png',
-            desc: 'Premium metal or shingle roofing options'
+            desc: `Give your shed & backyard landscape an upgraded look with our 29-gauge metal roof, available in a wide array of colors and backed by a 30-year limited warranty. OR…match your home's roof for looks or for HOA compliance using our residential grade architectural shingles, available in commonly used colors.`
           },
           {
             file: 'nails.png',
-            desc: 'Quality fasteners for secure assembly'
+            desc: `Exposed nails are ring-shanked and galvanized for rust prevention. Ring-shank nails have twice the withdrawal strength of smooth-shank nails. The rings around the nail shank lock into each groove along the shank, resulting in a nail that holds tight despite extreme wind or cyclical moisture conditions.`
           },
-          {
-            file: 'shed-with-flowers.jpg',
-            desc: 'Beautiful integration with your landscape'
-          }
         ]
 
         // Helper function to format the title
