@@ -76,6 +76,44 @@
   @apply text-sm text-center text-gray-400;
 }
 
+/* Social Media Section */
+@utility layout-footer-social {
+  @apply mt-6;
+}
+
+@utility layout-footer-subheading {
+  @apply text-white text-sm font-semibold mb-3;
+}
+
+@utility layout-footer-social-links {
+  @apply grid grid-cols-2 gap-2;
+}
+
+@utility layout-footer-social-link {
+  @apply flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-200;
+
+  & i {
+    @apply text-lg;
+  }
+
+  /* Individual social media colors on hover */
+  &:hover i.fa-facebook {
+    @apply text-blue-400;
+  }
+
+  &:hover i.fa-instagram {
+    @apply text-pink-400;
+  }
+
+  &:hover i.fa-tiktok {
+    @apply text-purple-400;
+  }
+
+  &:hover i.fa-youtube {
+    @apply text-red-500;
+  }
+}
+
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------- */

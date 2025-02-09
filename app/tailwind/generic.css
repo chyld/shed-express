@@ -411,15 +411,17 @@
 }
 
 @utility home-testimonial-card {
-  @apply bg-white p-6 rounded-xl shadow-md border border-gray-100;
+  @apply bg-white p-8 rounded-xl shadow-md border border-gray-100
+         flex flex-col justify-between h-full;
 }
 
 @utility home-testimonial-text {
-  @apply text-gray-600 mb-4 italic;
+  @apply text-gray-600 mb-6 italic leading-relaxed
+         text-sm sm:text-base;
 }
 
 @utility home-testimonial-author {
-  @apply font-semibold text-gray-900;
+  @apply font-semibold text-gray-900 text-right;
 }
 
 /* CTA Section */
@@ -470,4 +472,38 @@
 
 @utility play-section-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Contact Social Media Section */
+@utility contact-social-grid {
+  @apply grid grid-cols-2 gap-4 mt-4;
+}
+
+@utility contact-social-link {
+  @apply flex items-center gap-3 px-4 py-3 rounded-lg
+         bg-gray-50 hover:bg-gray-100 transition-colors duration-200;
+
+  & i {
+    @apply text-xl;
+  }
+
+  & span {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  &:hover i.fa-facebook {
+    @apply text-blue-600;
+  }
+
+  &:hover i.fa-instagram {
+    @apply text-pink-600;
+  }
+
+  &:hover i.fa-tiktok {
+    @apply text-purple-600;
+  }
+
+  &:hover i.fa-youtube {
+    @apply text-red-600;
+  }
 }
