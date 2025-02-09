@@ -13,6 +13,23 @@
   @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center;
 }
 
+@utility metal-description {
+  @apply mt-4 text-lg text-gray-600 max-w-3xl mx-auto text-center leading-relaxed;
+}
+
+/* Hero Section */
+@utility metal-hero {
+  @apply max-w-5xl mx-auto mb-16 relative overflow-hidden
+         rounded-2xl shadow-xl border-4 border-white
+         ring-1 ring-gray-200 ring-offset-4 ring-offset-gray-50;
+}
+
+@utility metal-hero-image {
+  @apply w-full h-[250px] sm:h-[350px] lg:h-[400px] 
+         object-cover object-center
+         hover:scale-105 transition-transform duration-700;
+}
+
 @utility metal-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
 }
@@ -410,4 +427,17 @@
          text-lg font-semibold bg-white text-blue-600
          hover:bg-blue-50 transition-colors duration-200
          shadow-lg hover:shadow-xl;
+}
+
+/* Metal Buildings Section Headers */
+@utility metal-section-title {
+  @apply text-2xl font-bold text-gray-900 mb-8 text-center mt-16;
+}
+
+@utility metal-section-description {
+  @apply text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8 leading-relaxed;
+}
+
+@utility metal-section-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
 }

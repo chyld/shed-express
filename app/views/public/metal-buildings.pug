@@ -4,131 +4,97 @@ block head
   link(rel="stylesheet", href="/css/generic.css")
 
 block content
+  -
+    // Helper function to format the title
+    const formatTitle = (filename) => {
+      return filename
+        .split('.')[0]
+        .split('-')
+        .join(' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+    }
+
   main.metal-container
     header.metal-header
       h1.metal-title Metal Buildings
+      p.metal-description At the Shed Place, we know how hard you work to earn your investments, which is why our metal buildings are built for supreme protection and withstand the test of time. Crafted from weather-resistant materials and adhering to the highest quality standards, our carports provide reliable protection. Whether it's for your vehicle of some kind, your livestock, your dream shop or just to add that extra outdoor space, our metal buildings are the ideal solution.
 
-    .metal-intro
-      .metal-intro-grid
-        .metal-intro-item
-          span.metal-intro-highlight Durability
-          | Built to last decades, resistant to rot, pests, and weather
-        .metal-intro-item
-          span.metal-intro-highlight Cost-Effective
-          | Lower construction and insurance costs
-        .metal-intro-item
-          span.metal-intro-highlight Quick Install
-          | Pre-engineered for faster construction
-        .metal-intro-item
-          span.metal-intro-highlight Versatile
-          | Perfect for garages, workshops, storage
-        .metal-intro-item
-          span.metal-intro-highlight Customizable
-          | Various sizes, colors, and configurations
-        .metal-intro-item
-          span.metal-intro-highlight Efficient
-          | Well-insulated for temperature control
+    .metal-hero
+      img.metal-hero-image(
+        src="/assets/metal-buildings/hero.jpg",
+        alt="Premium metal building showcasing quality construction and design"
+      )
 
-    .metal-grid
-      -
-        const imageData = [
-          {
-            file: 'achor-types.jpg',
-            desc: 'Various anchor types used to secure metal buildings to different foundation surfaces'
-          },
-          {
-            file: 'boxed-eave-regular-roof-close-up.jpg',
-            desc: 'Detailed view of our boxed eave roof design showing superior water runoff capability'
-          },
-          {
-            file: 'boxed-eave-roof.webp',
-            desc: 'Complete boxed eave roof system providing excellent protection and clean aesthetics'
-          },
-          {
-            file: 'carport-storage-combo.png',
-            desc: 'Combination unit featuring both covered parking and enclosed storage space'
-          },
-          {
-            file: 'colored-screws.jpeg',
-            desc: 'Selection of color-matched fasteners ensuring seamless appearance'
-          },
-          {
-            file: 'commercial-building.png',
-            desc: 'Large-scale commercial metal building suitable for industrial applications'
-          },
-          {
-            file: 'commerical-truss-system.webp',
-            desc: 'Heavy-duty truss system designed for maximum structural integrity'
-          },
-          {
-            file: 'farm-barn.png',
-            desc: 'Agricultural storage building perfect for farm equipment and supplies'
-          },
-          {
-            file: 'garage.png',
-            desc: 'Enclosed metal garage providing secure vehicle storage and protection'
-          },
-          {
-            file: 'loafing-shed.png',
-            desc: 'Open-sided shelter ideal for livestock and equipment storage'
-          },
-          {
-            file: 'metal-sheeting.jpeg',
-            desc: 'High-quality metal panels available in various colors and profiles'
-          },
-          {
-            file: 'metal-tubing.jpg',
-            desc: 'Structural steel tubing used in our building frameworks'
-          },
-          {
-            file: 'regular-roof.png',
-            desc: 'Standard roof style offering reliable protection at an economical price'
-          },
-          {
-            file: 'rv-cover.png',
-            desc: 'Tall clearance cover designed specifically for RV protection'
-          },
-          {
-            file: 'single-carport.png',
-            desc: 'Basic single vehicle carport providing essential weather protection'
-          },
-          {
-            file: 'single-roof-barn.png',
-            desc: 'Traditional barn style building with modern metal construction'
-          },
-          {
-            file: 'single-slope.png',
-            desc: 'Single slope design perfect for lean-to applications'
-          },
-          {
-            file: 'triple-wide-carport.png',
-            desc: 'Extra wide carport accommodating multiple vehicles'
-          },
-          {
-            file: 'vertical-roof-carport.jpeg',
-            desc: 'Vertical roof style offering superior snow and rain runoff'
-          },
-          {
-            file: 'vertical-roof-close-up.jpg',
-            desc: 'Detailed view of vertical roof panel installation'
-          }
-        ]
+    section
+      h2.metal-section-title Materials and Construction
+      p.metal-section-description Our metal buildings are constructed using premium-grade materials and advanced engineering techniques to ensure maximum durability and longevity. Every component is carefully selected and installed with precision.
 
-        // Helper function to format the title
-        const formatTitle = (filename) => {
-          return filename
-            .split('.')[0]
-            .split('-')
-            .join(' ')
-            .replace(/\b\w/g, l => l.toUpperCase());
-        }
+      .metal-section-grid
+        -
+          const materialsData = [
+            {
+              file: 'achor-types.jpg',
+              desc: 'For all ground and gravel installations, we utilize 24-inch rebar rod anchors. For asphalt pads, we use specialized asphalt anchors, and for concrete pads, concrete anchors are employed. Additionally, we offer optional high wind anchors for areas prone to strong winds or for those seeking added security and peace of mind.'
+            },
+            {
+              file: 'colored-screws.jpeg',
+              desc: 'All buildings come standard with galvanized self-tapping metal screws, equipped with a sealing rubber washer. However, for those seeking enhanced aesthetics, there is an option to upgrade to color-matching screws.'
+            },
+            {
+              file: 'metal-sheeting.jpeg',
+              desc: 'Crafted from 26-gauge metal sheeting, with an option to upgrade to 24-gauge, this material is used for the roof, trim, sidewalls, and gable ends. We offer 14 standard colors at no additional cost and custom colors for a nominal fee. You have the freedom to select your roof, trim, and sidewall colors, with an optional different wainscot color.'
+            },
+            {
+              file: 'metal-tubing.jpg',
+              desc: 'Constructed with 14-gauge steel tube framing, with an option to upgrade to 12-gauge, this structure comprises base rails, legs, roof trusses, and corner braces. Engineered for exceptional quality and durability, it is designed to endure and last.'
+            }
+          ]
 
-      each item in imageData
-        .metal-image-wrapper
-          img.metal-image(
-            src=`/assets/metal-buildings/${item.file}`,
-            alt=formatTitle(item.file)
-          )
-          .metal-description-container
-            .metal-description-title= formatTitle(item.file)
-            .metal-description-text= item.desc
+        each item in materialsData
+          .metal-image-wrapper
+            img.metal-image(
+              src=`/assets/metal-buildings/${item.file}`,
+              alt=item.desc
+            )
+            .metal-description-container
+              .metal-description-title= formatTitle(item.file)
+              .metal-description-text= item.desc
+
+    section
+      h2.metal-section-title Roof Styles
+      p.metal-section-description Choose from our variety of roof styles, each designed to meet specific needs and preferences. From standard roofs to vertical roofs, we have options to match your requirements and local weather conditions.
+
+      .metal-section-grid
+        -
+          const roofData = [
+            {
+              file: 'boxed-eave-regular-roof-close-up.jpg',
+              desc: 'Detailed view of our boxed eave roof design showing superior water runoff capability'
+            },
+            {
+              file: 'boxed-eave-roof.webp',
+              desc: 'Complete boxed eave roof system providing excellent protection and clean aesthetics'
+            },
+            {
+              file: 'regular-roof.png',
+              desc: 'Standard roof style offering reliable protection at an economical price'
+            },
+            {
+              file: 'vertical-roof-carport.jpeg',
+              desc: 'Vertical roof style offering superior snow and rain runoff'
+            },
+            {
+              file: 'vertical-roof-close-up.jpg',
+              desc: 'Detailed view of vertical roof panel installation'
+            }
+          ]
+
+        each item in roofData
+          .metal-image-wrapper
+            img.metal-image(
+              src=`/assets/metal-buildings/${item.file}`,
+              alt=item.desc
+            )
+            .metal-description-container
+              .metal-description-title= formatTitle(item.file)
+              .metal-description-text= item.desc
