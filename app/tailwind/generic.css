@@ -113,6 +113,10 @@
   @apply text-sm text-gray-600;
 }
 
+@utility play-description {
+  @apply mt-4 text-lg text-gray-600 max-w-3xl mx-auto text-center leading-relaxed;
+}
+
 /* Play Sets Intro Section */
 @utility play-intro {
   @apply max-w-3xl mx-auto mb-8 bg-gradient-to-br from-green-50 to-gray-50 
@@ -131,6 +135,19 @@
 @utility play-intro-highlight {
   @apply font-semibold text-green-800 block mb-1
          bg-green-100/50 px-1.5 py-0.5 rounded text-center;
+}
+
+/* Play Sets Hero Section */
+@utility play-hero {
+  @apply max-w-5xl mx-auto mb-16 relative overflow-hidden
+         rounded-2xl shadow-xl border-4 border-white
+         ring-1 ring-gray-200 ring-offset-4 ring-offset-gray-50;
+}
+
+@utility play-hero-image {
+  @apply w-full h-[250px] sm:h-[350px] lg:h-[400px] 
+         object-cover object-center
+         hover:scale-105 transition-transform duration-700;
 }
 
 /* About Page Layout */
@@ -439,5 +456,18 @@
 }
 
 @utility metal-section-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Play Sets Section Headers */
+@utility play-section-title {
+  @apply text-2xl font-bold text-gray-900 mb-8 text-center mt-16;
+}
+
+@utility play-section-description {
+  @apply text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8 leading-relaxed;
+}
+
+@utility play-section-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
 }

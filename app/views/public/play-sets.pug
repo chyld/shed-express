@@ -4,147 +4,167 @@ block head
   link(rel="stylesheet", href="/css/generic.css")
 
 block content
+  -
+    // Helper function to format the title
+    const formatTitle = (filename) => {
+      return filename
+        .split('.')[0]
+        .split('-')
+        .join(' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+    }
+
   main.play-container
     header.play-header
       h1.play-title Play Sets
+      p.play-description As a family-owned business, we understand the importance of engaging children in outdoor creative play to spark their imaginations. That's why we offer fully customizable sets with a variety of options that can grow with your child through all their playtime adventures. Plus, our sets are built to withstand the elements and all the imaginative games your kids can dream up.
 
-    .play-intro
-      .play-intro-grid
-        .play-intro-item
-          span.play-intro-highlight Safety First
-          | Built with premium materials and secure hardware
-        .play-intro-item
-          span.play-intro-highlight Durable
-          | Weather-resistant treated lumber construction
-        .play-intro-item
-          span.play-intro-highlight Educational
-          | Promotes physical activity and motor skills
-        .play-intro-item
-          span.play-intro-highlight Customizable
-          | Mix and match components for perfect setup
-        .play-intro-item
-          span.play-intro-highlight Family Fun
-          | Creates lasting memories in your backyard
-        .play-intro-item
-          span.play-intro-highlight Value
-          | Years of entertainment for the whole family
+    .play-hero
+      img.play-hero-image(
+        src="/assets/play-sets/super-cabin-tower.jpg",
+        alt="Premium super cabin play set featuring multiple levels and activities for endless family fun"
+      )
 
-    .play-grid
-      -
-        const imageData = [
-          {
-            file: '2x4-pressure-treated-wood.jpeg',
-            desc: 'High-quality pressure treated lumber for long-lasting durability'
-          },
-          {
-            file: '3-position-beam.jpg',
-            desc: 'Sturdy beam supporting multiple swing positions'
-          },
-          {
-            file: '4-position-beam.jpg',
-            desc: 'Extended beam design for additional swing capacity'
-          },
-          {
-            file: 'belt-swing.jpg',
-            desc: 'Classic belt swing for hours of enjoyment'
-          },
-          {
-            file: 'buoy-ball.jpg',
-            desc: 'Fun buoy ball swing for climbing and swinging'
-          },
-          {
-            file: 'classic-cabin-tower.jpg',
-            desc: 'Traditional cabin design with multiple play features'
-          },
-          {
-            file: 'ez-climb-stairs.jpg',
-            desc: 'Safe and easy-to-climb stairs for younger children'
-          },
-          {
-            file: 'ez-rider.jpg',
-            desc: 'Exciting glider swing for dynamic play'
-          },
-          {
-            file: 'fireman-pole.jpg',
-            desc: 'Classic fireman pole for quick descents'
-          },
-          {
-            file: 'gang-plank.jpg',
-            desc: 'Adventurous walking plank with safety rails'
-          },
-          {
-            file: 'ladder.jpg',
-            desc: 'Sturdy ladder for safe climbing access'
-          },
-          {
-            file: 'lag-bolts.jpg',
-            desc: 'Heavy-duty hardware for secure assembly'
-          },
-          {
-            file: 'lookout-tower.jpg',
-            desc: 'Elevated tower with panoramic views'
-          },
-          {
-            file: 'metal-roof.jpg',
-            desc: 'Durable metal roofing for weather protection'
-          },
-          {
-            file: 'monkey-bars.jpg',
-            desc: 'Classic monkey bars for upper body strength'
-          },
-          {
-            file: 'play-station-tower.jpg',
-            desc: 'Multi-level play station with various activities'
-          },
-          {
-            file: 'rock-wall.jpg',
-            desc: 'Challenging rock wall for climbing adventures'
-          },
-          {
-            file: 'split-shot-tower.jpg',
-            desc: 'Unique split-level tower design'
-          },
-          {
-            file: 'super-cabin-tower.jpg',
-            desc: 'Deluxe cabin tower with extended features'
-          },
-          {
-            file: 'toddler-swing.jpg',
-            desc: 'Safe and secure swing for younger children'
-          },
-          {
-            file: 'trapeze.jpg',
-            desc: 'Gymnastic-style trapeze bar for advanced play'
-          },
-          {
-            file: 'turbo-slide.jpg',
-            desc: 'Fast and exciting turbo slide'
-          },
-          {
-            file: 'wave-slide.jpg',
-            desc: 'Fun wave-style slide for gentle descents'
-          },
-          {
-            file: 'wood-screws.jpeg',
-            desc: 'Quality fasteners for secure construction'
-          }
-        ]
+    section
+      h2.play-section-title Materials & Construction
+      p.play-section-description Our play sets are built with premium materials and expert craftsmanship to ensure safety, durability, and years of enjoyment.
 
-        // Helper function to format the title
-        const formatTitle = (filename) => {
-          return filename
-            .split('.')[0]
-            .split('-')
-            .join(' ')
-            .replace(/\b\w/g, l => l.toUpperCase());
-        }
+      .play-section-grid
+        -
+          const materialsData = [
+            {
+              file: '2x4-pressure-treated-wood.jpeg',
+              desc: 'All of our playsets are built with 2x4 and 2x6 pressure-treated lumber, ensuring they are crafted from genuine wood that is heavy-duty. They boast exceptional durability, making them resistant to pests and weather alike.'
+            },
+            {
+              file: 'lag-bolts.jpg',
+              desc: 'We use lag bolts in thick or heavy traffic connections. Galvanized lag screws offer added protection against rust, making them suitable for outdoor projects. They are specifically designed to withstand exposure to extreme temperatures, heavy precipitation, and humidity.'
+            },
+            {
+              file: 'wood-screws.jpeg',
+              desc: 'No nails! Only wood screw connections. This design ensures that the connections remain secure even with continued use and movement, allowing the playset to better withstand weather and the test of time.'
+            },
+            {
+              file: 'metal-roof.jpg',
+              desc: 'No tarps or plastic roofs here—these playsets feature a real metal roof, providing additional strength and enduring protection.'
+            }
+          ]
 
-      each item in imageData
-        .play-image-wrapper
-          img.play-image(
-            src=`/assets/play-sets/${item.file}`,
-            alt=formatTitle(item.file)
-          )
-          .play-description-container
-            .play-description-title= formatTitle(item.file)
-            .play-description-text= item.desc
+        each item in materialsData
+          .play-image-wrapper
+            img.play-image(src=`/assets/play-sets/${item.file}`, alt=item.desc)
+            .play-description-container
+              .play-description-title= formatTitle(item.file)
+              .play-description-text= item.desc
+
+    section
+      h2.play-section-title Towers
+      p.play-section-description Choose from our variety of tower designs, each offering unique features and play experiences for children of all ages.
+
+      .play-section-grid
+        -
+          const towersData = [
+            {
+              file: 'classic-cabin-tower.jpg',
+              desc: 'Our most popular design featuring a single-level enclosed fort with windows and a charming cabin style roof. The perfect balance of open play space and cozy hideaway, it provides both shelter from the sun and rain while maintaining excellent visibility for parental supervision.'
+            },
+            {
+              file: 'lookout-tower.jpg',
+              desc: 'A single level deck elevated on sturdy stilts with a peaked roof for maximum headroom. The high vantage point creates an exciting play experience while providing shade. Perfect for smaller yards where you want to maximize ground space beneath for additional activities.'
+            },
+            {
+              file: 'play-station-tower.jpg',
+              desc: 'This open-air platform design maximizes play space and visibility. Without a roof, it offers unrestricted access for attachments on all sides and creates a versatile base for multiple activities. The open design allows for easy supervision and is perfect for areas with mature shade trees.'
+            },
+            {
+              file: 'split-shot-tower.jpg',
+              desc: 'This innovative design features two connected decks at different heights under a single roof system. The split-level layout creates distinct play zones while maintaining a compact footprint. Perfect for multiple age groups, it allows younger and older children to play at their preferred heights.'
+            },
+            {
+              file: 'super-cabin-tower.jpg',
+              desc: 'Our largest and most feature-rich design, boasting two full levels with walk-out decks on each floor. The lower level provides a shaded play space, while the upper level offers an exciting elevated play area. With maximum space for activities and attachments, this tower can accommodate multiple children and grow with your family.'
+            }
+          ]
+
+        each item in towersData
+          .play-image-wrapper
+            img.play-image(src=`/assets/play-sets/${item.file}`, alt=item.desc)
+            .play-description-container
+              .play-description-title= formatTitle(item.file)
+              .play-description-text= item.desc
+
+    section
+      h2.play-section-title Accessories
+      p.play-section-description Customize your play set with our wide range of accessories to create the perfect playground for your children.
+
+      .play-section-grid
+        -
+          const accessoriesData = [
+            {
+              file: '3-position-beam.jpg',
+              desc: 'Our 3-position swing beam is crafted from pressure-treated lumber and reinforced with heavy-duty hardware. Perfect for smaller yards while still providing multiple swing options.'
+            },
+            {
+              file: '4-position-beam.jpg',
+              desc: 'The extended 4-position swing beam maximizes play capacity, allowing for more swings or accessories. Built with the same durable materials as our 3-position beam but with extra length for additional fun.'
+            },
+            {
+              file: 'belt-swing.jpg',
+              desc: 'Our classic belt swing features a flexible, weather-resistant seat with coated chains for pinch-free swinging. The ergonomic design provides comfort and safety for hours of traditional swing enjoyment.'
+            },
+            {
+              file: 'buoy-ball.jpg',
+              desc: 'This versatile accessory doubles as both a swing and climbing challenge. The durable plastic buoy ball is weather-resistant and features a textured surface for better grip, perfect for active play.'
+            },
+            {
+              file: 'ez-climb-stairs.jpg',
+              desc: 'Designed with young children in mind, these stairs feature comfortable rise heights, full-width treads, and sturdy handrails on both sides. The non-slip surface provides secure footing in all weather conditions.'
+            },
+            {
+              file: 'ez-rider.jpg',
+              desc: 'This two-person glider swing promotes social play and coordination. Features comfortable seats, sturdy handles, and smooth gliding action. The controlled back-and-forth motion provides a unique swinging experience.'
+            },
+            {
+              file: 'fireman-pole.jpg',
+              desc: 'Made from solid steel with a weather-resistant coating, our fireman pole offers a thrilling way to descend. Properly spaced from the deck for safety, it includes a secure top mounting and smooth finish.'
+            },
+            {
+              file: 'gang-plank.jpg',
+              desc: 'This inclined walking bridge adds adventure while maintaining safety with its full-length guardrails. The textured surface prevents slipping, and the sturdy construction handles multiple children.'
+            },
+            {
+              file: 'ladder.jpg',
+              desc: 'Our heavy-duty ladder features flat steps rather than round rungs for easier climbing. Angled for stability and equipped with handles at the top, it is built from pressure-treated lumber for lasting durability.'
+            },
+            {
+              file: 'monkey-bars.jpg',
+              desc: 'Built with galvanized steel bars and robust support posts, our monkey bars develop upper body strength and coordination. The bars are properly spaced for safety and coated for comfortable grip.'
+            },
+            {
+              file: 'rock-wall.jpg',
+              desc: 'Features multi-colored rock holds mounted on an angled climbing surface. The holds can be repositioned to create different climbing challenges, and the wall includes safety ropes for added security.'
+            },
+            {
+              file: 'toddler-swing.jpg',
+              desc: 'Specially designed for young children, this swing has a high-back seat with a three-point safety harness. The soft, weather-resistant plastic construction and coated chains ensure safe, comfortable swinging.'
+            },
+            {
+              file: 'trapeze.jpg',
+              desc: 'This gymnastics-style bar features comfortable grip coating and sturdy chain connections. Perfect for building upper body strength, it can be adjusted to different heights to accommodate growing children.'
+            },
+            {
+              file: 'turbo-slide.jpg',
+              desc: 'Our fastest slide option, featuring a steep angle for exciting descents. Made from durable, UV-resistant plastic with high sidewalls for safety and a smooth finish that prevents static buildup.'
+            },
+            {
+              file: 'wave-slide.jpg',
+              desc: 'The gentle waves in this slide create a fun, controlled descent. Made from thick, UV-protected plastic with high sides for safety, it is perfect for younger children or those who prefer a more relaxed sliding experience.'
+            }
+          ]
+
+        each item in accessoriesData
+          .play-image-wrapper
+            img.play-image(src=`/assets/play-sets/${item.file}`, alt=item.desc)
+            .play-description-container
+              .play-description-title= formatTitle(item.file)
+              .play-description-text= item.desc
