@@ -6,36 +6,28 @@ const prisma = new PrismaClient();
 
 // Helper function to parse form data
 const parseTrailerData = (body) => {
-  const {
-    title,
-    description,
-    modelNumber,
-    plateNumber,
-    vin,
-    trailerType,
-    sizeWidth,
-    sizeLength,
+  // Convert dollar amount to cents
+  const price = Math.round(parseFloat(body.price) * 100);
+
+  const trailerData = {
+    ...body,
     price,
-    salePercent,
-    isNew,
-    isSold,
-    isDeleted,
-  } = body;
+  };
 
   return {
-    title,
-    description,
-    modelNumber,
-    plateNumber,
-    vin,
-    trailerType,
-    sizeWidth: parseInt(sizeWidth),
-    sizeLength: parseInt(sizeLength),
-    price: parseInt(price),
-    salePercent: parseInt(salePercent),
-    isNew: isNew === "on",
-    isSold: isSold === "on",
-    isDeleted: isDeleted === "on",
+    title: trailerData.title,
+    description: trailerData.description,
+    modelNumber: trailerData.modelNumber,
+    plateNumber: trailerData.plateNumber,
+    vin: trailerData.vin,
+    trailerType: trailerData.trailerType,
+    sizeWidth: parseInt(trailerData.sizeWidth),
+    sizeLength: parseInt(trailerData.sizeLength),
+    price: parseInt(trailerData.price),
+    salePercent: parseInt(trailerData.salePercent),
+    isNew: trailerData.isNew === "on",
+    isSold: trailerData.isSold === "on",
+    isDeleted: trailerData.isDeleted === "on",
   };
 };
 
@@ -66,7 +58,9 @@ router.get("/", async (req, res) => {
       orderBy: [
         { isDeleted: "asc" }, // Non-deleted items first
         { isSold: "asc" }, // Then non-sold items
-        { createdAt: "desc" }, // Newest at the top
+        { sizeWidth: "asc" }, // Sort by width first
+        { sizeLength: "asc" }, // Then by length
+        { createdAt: "desc" }, // Finally by creation date
       ],
     });
 

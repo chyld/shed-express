@@ -246,7 +246,7 @@
 
 /* Hero Section */
 @utility home-hero {
-  @apply relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 
+  @apply relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 
          rounded-3xl shadow-2xl mb-12;
 }
 
@@ -257,8 +257,7 @@
 
 @utility home-hero-logo {
   @apply w-40 sm:w-48 lg:w-56 mb-6
-         filter brightness-0 invert /* Makes the logo white */
-         animate-fade-in-down; /* Optional animation */
+         animate-fade-in-down; /* Keep the animation */
 }
 
 @keyframes fade-in-down {
@@ -277,12 +276,12 @@
 }
 
 @utility home-hero-title {
-  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4
+  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4
          tracking-tight leading-tight;
 }
 
 @utility home-hero-subtitle {
-  @apply text-base sm:text-lg text-gray-300 max-w-2xl mx-auto;
+  @apply text-base sm:text-lg text-gray-600 max-w-2xl mx-auto;
 }
 
 @utility home-hero-cta {
@@ -325,6 +324,22 @@
 
 @utility home-category-description {
   @apply text-sm text-gray-200;
+}
+
+@utility home-category-wrapper {
+  @apply flex flex-col;
+}
+
+@utility home-category-list {
+  @apply mt-4 space-y-2 list-none bg-white p-4 rounded-lg shadow-sm;
+}
+
+@utility home-category-item {
+  @apply text-sm text-gray-700 hover:text-gray-900 flex items-center gap-2;
+}
+
+@utility home-category-bullet {
+  @apply w-4 h-4 text-blue-500 flex-shrink-0;
 }
 
 /* Features Section */

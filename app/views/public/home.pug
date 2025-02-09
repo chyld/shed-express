@@ -22,48 +22,278 @@ block content
       h2.home-section-title Our Products
       .home-categories-grid
         // Sheds
-        a.home-category-card(href="/sheds")
-          img.home-category-image(
-            src="/assets/home/shed.jpg",
-            alt="Quality Storage Sheds"
-          )
-          .home-category-overlay
-            h3.home-category-title Storage Sheds
-            p.home-category-description
-              | Custom storage solutions for every space and need
+        .home-category-wrapper
+          a.home-category-card(href="/sheds")
+            img.home-category-image(
+              src="/assets/home/shed.jpg",
+              alt="Quality Storage Sheds"
+            )
+            .home-category-overlay
+              h3.home-category-title Storage Sheds
+          ul.home-category-list
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Tiny Home Shells
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Wood Storage Sheds
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Metal Storage Sheds
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Greenhouses
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Chicken Coops
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Animal Shelters
 
         // Trailers
-        a.home-category-card(href="/trailers")
-          img.home-category-image(
-            src="/assets/home/trailer.jpg",
-            alt="Utility Trailers"
-          )
-          .home-category-overlay
-            h3.home-category-title Utility Trailers
-            p.home-category-description
-              | Reliable trailers for work and transportation
+        .home-category-wrapper
+          a.home-category-card(href="/trailers")
+            img.home-category-image(
+              src="/assets/home/trailer.jpg",
+              alt="Utility Trailers"
+            )
+            .home-category-overlay
+              h3.home-category-title Utility Trailers
+          ul.home-category-list
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Single Axle Utility
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Double Axle Utility
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Car Haulers
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Equipment Haulers
 
         // Metal Buildings
-        a.home-category-card(href="/metal-buildings")
-          img.home-category-image(
-            src="/assets/home/metal.jpg",
-            alt="Metal Buildings"
-          )
-          .home-category-overlay
-            h3.home-category-title Metal Buildings
-            p.home-category-description
-              | Durable structures for commercial and residential use
+        .home-category-wrapper
+          a.home-category-card(href="/metal-buildings")
+            img.home-category-image(
+              src="/assets/home/metal.jpg",
+              alt="Metal Buildings"
+            )
+            .home-category-overlay
+              h3.home-category-title Metal Buildings
+          ul.home-category-list
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Carports
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span RV Covers
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Garages
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Barns
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Single Slope
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Loafing Shed
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Commercial
 
         // Play Sets
-        a.home-category-card(href="/play-sets")
-          img.home-category-image(
-            src="/assets/home/play.jpg",
-            alt="Children's Play Sets"
-          )
-          .home-category-overlay
-            h3.home-category-title Play Sets
-            p.home-category-description
-              | Create lasting memories with quality play equipment
+        .home-category-wrapper
+          a.home-category-card(href="/play-sets")
+            img.home-category-image(
+              src="/assets/home/play.jpg",
+              alt="Children's Play Sets"
+            )
+            .home-category-overlay
+              h3.home-category-title Play Sets
+          ul.home-category-list
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Swings
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Slides
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Bridges
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Towers
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Fireman Poles
+            li.home-category-item
+              svg.home-category-bullet(
+                xmlns="http://www.w3.org/2000/svg",
+                viewBox="0 0 20 20",
+                fill="currentColor"
+              )
+                path(
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                )
+              span Sand Boxes
 
     // Features Section
     section.home-features

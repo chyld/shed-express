@@ -72,7 +72,9 @@ router.get("/", async (req, res) => {
       orderBy: [
         { isDeleted: "asc" }, // Non-deleted items first
         { isSold: "asc" }, // Then non-sold items
-        { createdAt: "desc" }, // Newest at the top
+        { sizeWidth: "asc" }, // Sort by width first
+        { sizeLength: "asc" }, // Then by length
+        { createdAt: "desc" }, // Finally by creation date
       ],
     });
 
@@ -96,8 +98,18 @@ router.get("/new", async (req, res) => {
 // Create new shed
 router.post("/new", async (req, res) => {
   try {
+    // Convert dollar amounts to cents
+    const basePrice = Math.round(parseFloat(req.body.basePrice) * 100);
+    const optionsPrice = Math.round(parseFloat(req.body.optionsPrice) * 100);
+
+    const shedData = {
+      ...req.body,
+      basePrice,
+      optionsPrice,
+    };
+
     await prisma.shed.create({
-      data: parseShedData(req.body),
+      data: parseShedData(shedData),
     });
 
     res.redirect("/admin/sheds");
@@ -130,11 +142,21 @@ router.get("/:id/edit", async (req, res) => {
 // Update shed
 router.post("/:id", async (req, res) => {
   try {
+    // Convert dollar amounts to cents
+    const basePrice = Math.round(parseFloat(req.body.basePrice) * 100);
+    const optionsPrice = Math.round(parseFloat(req.body.optionsPrice) * 100);
+
+    const shedData = {
+      ...req.body,
+      basePrice,
+      optionsPrice,
+    };
+
     await prisma.shed.update({
       where: {
         id: req.params.id,
       },
-      data: parseShedData(req.body),
+      data: parseShedData(shedData),
     });
 
     res.redirect("/admin/sheds");
