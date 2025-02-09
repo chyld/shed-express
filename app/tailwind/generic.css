@@ -40,19 +40,21 @@
 }
 
 @utility metal-image {
-  @apply w-full aspect-square object-cover;
+  @apply w-full aspect-[4/3] object-cover object-center
+         hover:scale-105 transition-transform duration-300;
 }
 
 @utility metal-description-container {
-  @apply p-4 bg-white border-t border-gray-200;
+  @apply p-4 bg-white border-t border-gray-200 flex flex-col gap-2;
 }
 
 @utility metal-description-title {
-  @apply text-sm font-semibold text-gray-900 mb-1;
+  @apply text-sm font-semibold text-gray-900 
+         border-b border-gray-100 pb-2;
 }
 
 @utility metal-description-text {
-  @apply text-sm text-gray-600;
+  @apply text-sm text-gray-600 leading-relaxed;
 }
 
 /* Metal Buildings Intro Section */
@@ -458,7 +460,8 @@
 }
 
 @utility metal-section-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 
+         max-w-7xl mx-auto;
 }
 
 /* Play Sets Section Headers */

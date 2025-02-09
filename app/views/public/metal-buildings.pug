@@ -87,20 +87,79 @@ block content
               desc: 'Complete boxed eave roof system providing excellent protection and clean aesthetics'
             },
             {
-              file: 'regular-roof.png',
-              desc: 'Standard roof style offering reliable protection at an economical price'
-            },
-            {
-              file: 'vertical-roof-carport.jpeg',
-              desc: 'Vertical roof style offering superior snow and rain runoff'
-            },
-            {
               file: 'vertical-roof-close-up.jpg',
               desc: 'Detailed view of vertical roof panel installation'
             }
           ]
 
         each item in roofData
+          .metal-image-wrapper
+            img.metal-image(
+              src=`/assets/metal-buildings/${item.file}`,
+              alt=item.desc
+            )
+            .metal-description-container
+              .metal-description-title= formatTitle(item.file)
+              .metal-description-text= item.desc
+
+    section
+      h2.metal-section-title Building Options
+      p.metal-section-description Explore our diverse range of metal building options designed to meet your specific needs. From carports to commercial buildings, we offer customizable solutions for every purpose.
+
+      .metal-section-grid
+        -
+          const buildingOptions = [
+            {
+              file: 'carport-storage-combo.png',
+              desc: 'Maximize functionality with our combination units featuring both covered parking and secure storage space in one structure.'
+            },
+            {
+              file: 'commercial-building.png',
+              desc: 'Large-scale metal buildings perfect for commercial applications, workshops, or industrial storage needs.'
+            },
+            {
+              file: 'farm-barn.png',
+              desc: 'Spacious farm barns designed for agricultural storage, livestock shelter, or equipment protection.'
+            },
+            {
+              file: 'garage.png',
+              desc: 'Enclosed metal garages offering secure vehicle storage and protection from all weather conditions.'
+            },
+            {
+              file: 'loafing-shed.png',
+              desc: 'Open-sided structures ideal for livestock shelter or equipment storage with easy access.'
+            },
+            {
+              file: 'regular-roof.png',
+              desc: 'Standard roof design offering reliable protection at an economical price point.'
+            },
+            {
+              file: 'rv-cover.png',
+              desc: 'Tall, wide covers specifically designed to protect RVs, boats, and other large vehicles.'
+            },
+            {
+              file: 'single-carport.png',
+              desc: 'Basic carport design perfect for single vehicle protection from sun and weather.'
+            },
+            {
+              file: 'single-roof-barn.png',
+              desc: 'Traditional barn style with modern metal construction for versatile storage solutions.'
+            },
+            {
+              file: 'single-slope.png',
+              desc: 'Economical design with a single slope roof, perfect for lean-to applications or against existing structures.'
+            },
+            {
+              file: 'triple-wide-carport.png',
+              desc: 'Extra wide carports designed to protect multiple vehicles or create large covered spaces.'
+            },
+            {
+              file: 'vertical-roof-carport.jpeg',
+              desc: 'Premium vertical roof design offering superior snow and rain runoff for maximum protection.'
+            }
+          ]
+
+        each item in buildingOptions
           .metal-image-wrapper
             img.metal-image(
               src=`/assets/metal-buildings/${item.file}`,
