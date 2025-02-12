@@ -560,6 +560,24 @@
   @apply text-gray-600 text-sm leading-relaxed;
 }
 
+/* Order Steps List */
+@utility playsectionlist {
+  @apply space-y-4 max-w-3xl mx-auto;
+}
+
+@utility playsectionitem {
+  @apply p-6 bg-white rounded-xl shadow-md
+         border border-green-100 hover:border-green-200
+         transform hover:-translate-y-0.5 transition-all duration-200
+         text-lg font-semibold text-gray-900
+         flex items-center gap-4;
+}
+
+@utility playsectionnumber {
+  @apply w-10 h-10 flex-shrink-0 rounded-full bg-green-100
+         flex items-center justify-center text-2xl font-bold text-green-600;
+}
+
 /* Spacing Utilities */
 @utility section-spacing-large {
   @apply mt-24;
